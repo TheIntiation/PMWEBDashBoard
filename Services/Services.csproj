@@ -136,6 +136,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\UserManagementController.cs" />
     <Compile Include="Controllers\WorkFlowController.cs" />
+    <Compile Include="Controllers\WorkflowKPIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

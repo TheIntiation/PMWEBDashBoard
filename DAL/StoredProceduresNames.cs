@@ -16,6 +16,8 @@ namespace DAL
         public static string GetPendingDocuments = "[dbo].FG_Workflow_ActiveDocumnets";
         //@User  AS NVARCHAR(50) USPMC_Menu_Workflow_GetInboxByUser
         public static string GetWorkflowMenu = "[dbo].USPMC_Menu_Workflow_GetInboxByUser";
+        //@Project  AS NVARCHAR(50) FG_Workflow_ActiveDocumnets
+        public static string GetActiveWorkflowdocuments = "[dbo].FG_Workflow_ActiveDocumnets";
 
     }
 
