@@ -14,9 +14,11 @@ namespace DAL
         public static string rpt_Workflow_GetInboxByUser = "[dbo].uspmc_Workflow_GetInboxByUser";
         public static string GetDocumentsInDelay = "[dbo].FG_Workflow_GetDocumentsInDelay";
         public static string GetPendingDocuments = "[dbo].FG_Workflow_ActiveDocumnets";
-        
+        //@User  AS NVARCHAR(50) USPMC_Menu_Workflow_GetInboxByUser
+        public static string GetWorkflowMenu = "[dbo].USPMC_Menu_Workflow_GetInboxByUser";
+
     }
-    
+
 
 
 

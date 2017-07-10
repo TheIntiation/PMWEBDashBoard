@@ -44,6 +44,16 @@ namespace Services.Controllers
         }
 
         [HttpGet]
+        [Route("api/WorkFlow/getWorkflowmenu")]
+        public HttpResponseMessage getWorkflowMenu(string userId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetWorkflowMenu(userId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
         [Route("api/WorkFlow/GetPendingDocuments")]
         public HttpResponseMessage GetPendingDocuments(string Project)
         {

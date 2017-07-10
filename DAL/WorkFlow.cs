@@ -179,5 +179,52 @@ namespace DAL
           return returnValue;
 
       }
+      public static DataTransferModel GetWorkflowMenu(string UserId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<WorkflowMenu> myList = new List<WorkflowMenu>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.GetWorkflowMenu;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+
+                    sqlCommand.Parameters.AddWithValue("@User", UserId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new WorkflowMenu()
+                        {
+                            RecordTypeId = (Int64)reader["RecordTypeId"],
+                           RecordType = reader.GetDataReaderString("RecordType"),
+                            TotalPendingItems = (int)reader["TotalPendingItems"],
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
     }
 }

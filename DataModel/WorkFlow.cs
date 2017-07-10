@@ -44,4 +44,13 @@ namespace DataModel
        
     }
 
+    public class WorkflowMenu
+    {
+        //RecordTypeId	RecordType	TotalPendingItems
+
+        public Int64 RecordTypeId { get; set; }
+        public string RecordType { get; set; }
+        public int TotalPendingItems { get; set; }
+    }
+
 }
