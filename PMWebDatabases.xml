@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dtsPMWebDatabases>
+  
+
+<tblPMWebDatabases>
+    <Id>1</Id>
+    <DatabaseName>PmSolutions</DatabaseName>
+    <ConnectionString>Server=.;Database=Pmsolutions;uid=PMWebUser;pwd=PMWeb;</ConnectionString>
+  </tblPMWebDatabases>
+
+<tblPMWebDatabases>
+    <Id>2</Id>
+    <DatabaseName>PMWeb</DatabaseName>
+    <ConnectionString>Server=.;Database=PmsolutionsDemo;uid=PMWebUser;pwd=PMWeb;</ConnectionString>
+  </tblPMWebDatabases>
+ 
+</dtsPMWebDatabases>

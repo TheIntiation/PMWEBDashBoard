@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "PMWEB";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    DataModel.UserAccount loggedInUser = (DataModel.UserAccount)Session["CurrentUser"];
+    long UserID = 0;
+    string UserName = string.Empty;
+    string UserFullName = string.Empty;
+    if (Session["CurrentUser"] != null)
+    {
+        UserID = loggedInUser.UserID;
+        UserName = loggedInUser.UserName;
+        UserFullName = loggedInUser.UserFullName;
+    }
+    var baseUrl = @Html.Raw(ViewBag.ServiceUrl);
+}
+<style type="text/css">
+    body{
+        color:black;
+    }
+</style>
+
+<section id="main-content" >
+    <section class="wrapper site-min-height">
+        <!-- page start-->
+        <div class="row">
+            <div class="col-lg-12">
+                <!--breadcrumbs start -->
+                <ul class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> KPI'S </a></li>
+                    <li><a href="#" class="active">Dashboard</a></li>
+                </ul>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group control-label">
+                            <div class="col-lg-3">
+                                <div class="alert alert-danger alert-block fade in">
+                                    <h4>
+                                        SELECTED PROJECT!
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <select class="form-control m-bot15" data-bind="options: project_List, value:selectedProject, optionsText: 'PName', optionsValue: 'PName' "></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Delay Work Flow Document &nbsp;&nbsp;<span style="color:red;font-weight:bold;" data-bind="text:selectedProject">Plot Q</span>
+                            </header>
+                            <div class="panel-body">
+                                <div id="DocumentsInDelayList" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-6">
+                        <section class="panel">
+                            <header class="panel-heading">
+                                Pending Work Flow Documents &nbsp;&nbsp;<span style="color:red;font-weight:bold;" data-bind="text:selectedProject">Plot Q</span>
+                            </header>
+                            <div class="panel-body">
+                                <div id="PendingDocumentsPie" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+                <!--breadcrumbs end -->
+            </div>
+        </div>
+        <!-- page end-->
+    </section>
+</section>
+
+
+@section Scripts {
+
+   
+
+    <script src="~/JS_Model/JS_Modesl.js" type="text/javascript"></script>
+    <script src="~/JS_UI/HomeUI.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+
+        var baseUrl = '@baseUrl';
+        var UserID = '@UserID';
+        var UserName = '@UserName';
+        var UserFullName = '@UserFullName';
+
+        $(document).ready(function () {
+            var owner = new HomeUI(baseUrl, UserID, UserName, UserFullName);
+            ko.applyBindings(owner);
+        });
+    </script>
+}
+

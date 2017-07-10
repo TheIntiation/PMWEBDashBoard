@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "PMWEB";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    DataModel.UserAccount loggedInUser = (DataModel.UserAccount)Session["CurrentUser"];
+    long UserID = 0;
+    string UserName = string.Empty;
+    string UserFullName = string.Empty;
+    if (Session["CurrentUser"] != null)
+    {
+        UserID = loggedInUser.UserID;
+        UserName = loggedInUser.UserName;
+        UserFullName = loggedInUser.UserFullName;
+    }
+    var baseUrl = @Html.Raw(ViewBag.ServiceUrl);
+}
+
+<div class="navbar-default sidebar" role="navigation" style="padding-top:20px;">
+    
+    <div class="sidebar-nav slimscrollsidebar">
+        
+        <ul class="nav" id="side-menu">
+
+            <li style="padding: 70px 0 0;">
+                <a href="~/Home/Index" class="waves-effect"><i class="fa  fa-home fa-fw" aria-hidden="true"></i>Home</a>
+             </li>
+            <li>
+                <a href="~/WorkFlow/Index" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Work Flow&nbsp;&nbsp;<span class="label label-rounded label-success" data-bind="text:TotalPendingWorkFlow">5</span></a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>RFI&nbsp;&nbsp;</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i>Letters&nbsp;&nbsp;</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect"><i class="fa fa-cubes fa-fw" aria-hidden="true"></i>Meetings &nbsp;&nbsp;</a>
+            </li>
+            <li>
+                <a href="#" class="waves-effect"><i class="fa fa fa-envelope-o fa-fw" aria-hidden="true"></i>Emails &nbsp;&nbsp;</a>
+            </li>
+            <li>
+                <a href="~/Home/LogOut" class="waves-effect"><i class="fa fa-external-link fa-fw" aria-hidden="true"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Left Sidebar -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Home</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        @*<div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <h3 class="box-title">Work Flow</h3>
+                    <br /
+
+                </div>
+
+                <div>
+
+                </div>
+            </div>
+        </div>*@
+    </div>
+
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2017 &copy;PMWEB / USPMC </footer>
+</div>
+
+
+ 
+@section Scripts {
+
+    <script src="@Url.Content("~/Content/js/knockout-3.1.0.js")"></script>
+    <script src="@Url.Content("~/Content/js/knockout-3.1.0.debug.js")"></script>
+    <script src="@Url.Content("~/Content/js/knockout.validation.js")"></script>
+    <script src="@Url.Content("~/Content/js/highcharts.js")"></script>
+
+    <script src="~/JS_Model/JS_Modesl.js" type="text/javascript"></script>
+    <script src="~/JS_UI/HomeUI.js" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+
+        var baseUrl = '@baseUrl';
+        var UserID = '@UserID';
+        var UserName = '@UserName';
+        var UserFullName = '@UserFullName';
+
+        $(document).ready(function () {
+            var owner = new HomeUI(baseUrl, UserID, UserName, UserFullName);
+            ko.applyBindings(owner);
+        });
+    </script>
+}
+
+ 
