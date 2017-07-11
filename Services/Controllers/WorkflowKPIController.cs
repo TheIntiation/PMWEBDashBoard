@@ -21,5 +21,15 @@ namespace Services.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
+
+        [HttpGet]
+        [Route("api/WorkFlowKPI/getdelayedworkflowdocuments")]
+        public HttpResponseMessage getdelayedworkflowdocuments(string projectid)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkflowKPI.getDelayedWorkflowDocuments(projectid);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
     }
 }

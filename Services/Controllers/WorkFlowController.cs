@@ -62,6 +62,40 @@ namespace Services.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
+        public class obj
+        {
+            public Int64 User {get ; set ;}
+            public Int64 DocId { get; set; }
+            public Int64 EntId { get; set; }
+            public Int64 RecId { get; set; }
+            public Int64 RecTypeId { get; set; }
+            public Int64 ObjTypeId { get; set; }
+            public Int64 ProjectId { get; set; }
+            public string Comment { get; set; }
+
+        }
+        
+
+
+        [HttpPost]
+        [Route("api/WorkFlow/finalapproveforworkflow")]
+        public HttpResponseMessage finalapproveforworkflow(obj obj)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.finalApproveForWorkflow(obj.User,obj.DocId,obj.EntId,
+                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+        [HttpGet]
+        [Route("api/WorkFlow/getworkflowdetailsbymodule")]
+        public HttpResponseMessage GetWorkflowDetailByModuleAndUser(string username,int moduleId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.getWorkflowDetailByModule(username, moduleId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
 
 
     }
