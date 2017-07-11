@@ -3194,6 +3194,7 @@
     <Content Include="UltimateMobile1\www\logos\loggo.png" />
     <Content Include="UltimateMobile1\www\logos\mbg.png" />
     <Content Include="UltimateMobile1\www\logos\pemweb.png" />
+    <Content Include="UltimateMobile1\www\logos\proj.gif" />
     <Content Include="UltimateMobile1\www\main.html" />
     <Content Include="UltimateMobile1\www\res\icon\android\drawable-hdpi-icon.png" />
     <Content Include="UltimateMobile1\www\res\icon\android\drawable-ldpi-icon.png" />
