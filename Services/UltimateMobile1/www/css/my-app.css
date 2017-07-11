@@ -237,6 +237,49 @@ di1v { margin: 20px; }
    width: 240px;
 }
 
+.kpi_title{
+    margin-left:10px;
+    margin-top:4px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:14px;
+    font-weight:normal;
+    color:white;
+    display: inline-block;
+}
+.leftspan{
+    margin-left:20%;
+     margin-right:10%;
+    margin-top:10%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:16px;
+    font-weight:normal;
+    color:white;
+    display: inline-block;
+}
+.middlespan{
+   
+    margin-top:4px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:16px;
+    font-weight:normal;
+    border-left-style:solid;
+    border-left-width:2px;
+    height:54%;
+    color:white;
+    display: inline-block;
+}
+
+.rightspan{
+    margin-left:10%;
+     margin-right:10%;
+    margin-top:4px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size:16px;
+    font-weight:normal;
+    color:white;
+    display: inline-block;
+}
+
 .styled-select.slate select {
    border: 1px solid #ccc;
    font-size: 16px;
