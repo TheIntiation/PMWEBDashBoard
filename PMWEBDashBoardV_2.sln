@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Layer", "Data Layer", "{74FD5FBE-8A57-4CD6-9936-2BE8C5DDCAD5}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation Layer", "Presentation Layer", "{072B2A27-6AB2-469D-9AB7-A77EFE3E2C87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMWEB_WEB", "PMWEB_WEB\PMWEB_WEB\PMWEB_WEB.csproj", "{34DE3585-ACC4-4543-BA72-A211D446DDA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileAppWeb", "..\..\..\MobileAppWeb\MobileAppWeb\MobileAppWeb.csproj", "{4E3A26B2-69FB-4CC1-90CC-0023645CFDB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +41,18 @@ Global
 		{34DE3585-ACC4-4543-BA72-A211D446DDA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34DE3585-ACC4-4543-BA72-A211D446DDA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34DE3585-ACC4-4543-BA72-A211D446DDA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E3A26B2-69FB-4CC1-90CC-0023645CFDB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3A26B2-69FB-4CC1-90CC-0023645CFDB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3A26B2-69FB-4CC1-90CC-0023645CFDB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3A26B2-69FB-4CC1-90CC-0023645CFDB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{34DE3585-ACC4-4543-BA72-A211D446DDA5} = {072B2A27-6AB2-469D-9AB7-A77EFE3E2C87}
 		{592BF027-78EB-40FB-BEC4-E4C23FAC1A28} = {74FD5FBE-8A57-4CD6-9936-2BE8C5DDCAD5}
 		{598870D2-18FE-493F-AE49-D07733F47155} = {74FD5FBE-8A57-4CD6-9936-2BE8C5DDCAD5}
 		{357B6573-1687-4E5E-9481-A7180FE861B2} = {3A5C5A4B-4B20-498D-8015-5ED02DA1949F}
+		{34DE3585-ACC4-4543-BA72-A211D446DDA5} = {072B2A27-6AB2-469D-9AB7-A77EFE3E2C87}
 	EndGlobalSection
 EndGlobal
