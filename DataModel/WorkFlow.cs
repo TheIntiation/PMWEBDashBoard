@@ -53,4 +53,14 @@ namespace DataModel
         public int TotalPendingItems { get; set; }
     }
 
+    public class WorkflowDetailByModel
+    {
+        //RecordTypeId	RecordType	TotalPendingItems
+        public Int64 RecordTypeId { get; set; }
+        public string RecordType { get; set; }
+        public int TotalPendingItems { get; set; }
+    }
+
+
+
 }

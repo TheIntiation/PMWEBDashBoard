@@ -12,7 +12,7 @@ namespace Services.Controllers
 {
     public class UserManagementController : ApiController
     {
-        [HttpGet]
+        [HttpPost]
         [Route("api/UserManagement/LoginUserValidation")]
         public HttpResponseMessage LoginUserValidation(string UserName, string Password)
         {
