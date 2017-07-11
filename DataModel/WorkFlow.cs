@@ -52,6 +52,34 @@ namespace DataModel
         public string RecordType { get; set; }
         public int TotalPendingItems { get; set; }
     }
+    public class WorkflowDetailsByModule
+    {
+        // RowID DocumentId  ObjectTypeId RecordId    RecordTypeId RecordType  EntityId Project PropertyName Entity
+        //Description StatusId StepNumber NumberOfSteps MainPage CurrentStepNumber DueDate RecordNumber projectId
+
+
+        public long RowID { get; set; }
+        public long DocumentId { get; set; }
+        public long ObjectTypeId { get; set; }
+        public long RecordId { get; set; }
+        public long RecordTypeId { get; set; }
+        public string RecordType { get; set; }
+
+        public long EntityId { get; set; }
+        public string Project { get; set; }
+        public string PropertyName { get; set; }
+        public string Entity { get; set; }
+        public string Description { get; set; }
+        public long StatusId { get; set; }
+
+        public long StepNumber { get; set; }
+        public long NumberOfSteps { get; set; }
+        public string MainPage { get; set; }
+        public long CurrentStepNumber { get; set; }
+        public DateTime? DueDate { get; set; }
+        public string RecordNumber { get; set; }
+        public long projectId { get; set; }
+    }
 
     public class WorkflowDetailByModel
     {
