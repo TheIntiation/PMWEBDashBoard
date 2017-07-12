@@ -54,6 +54,10 @@ $$("#kpitab").on('click',function(){
 $$("#Workflow_correspondence").on('click', function () {
     mainView.router.loadPage("workflowDetails.html");
 });
+
+$$("#workflowkpi").on('click', function () {
+    mainView.router.loadPage("WorkflowKPI.html");
+});
 $$("#next").on('click',function(){
    mainView.router.loadPage("main.html") 
 });
