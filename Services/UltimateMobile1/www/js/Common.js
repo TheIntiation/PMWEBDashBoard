@@ -6,6 +6,323 @@ myApp.onPageInit('main', function (page) {
     pagination:'.swiper-pagination'
   });
     
+
+    Highcharts.chart('container6', {
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            },
+            backgroundColor: 'transparent'
+        },
+        title: {
+            text: ''
+        },
+        tooltip: {
+            pointFormat: ''
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    color: 'white',
+                    distance: -40,
+                    formatter: function () {
+                        if (this.percentage != 0) return Math.round(this.percentage) + '';
+
+                    }
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+
+            data: [
+                ['Submitted', 45.0],
+                ['Approved', 26.8],
+                 ['Returened', 16],
+                {
+                    name: 'Rejected',
+                    y: 22,
+                    sliced: true,
+                    selected: true
+                }
+            ]
+        }]
+
+    });
+
+    Highcharts.chart('containerddd8', {
+        chart: {
+            type: 'column'
+          , backgroundColor: 'transparent'
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: [
+                'GateWay0',
+                'GateWay1',
+                'GateWay2',
+                'GateWay3',
+                'GateWay4',
+                'GateWay5'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            }
+        },
+        tooltip: {
+            headerFormat: '',
+            pointFormat: '' +
+                '',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Achive',
+            data: [400, 120, 130, 50, 150, 200]
+
+        }, {
+            name: 'Planed',
+            data: [300, 100, 140, 100, 250, 200]
+
+        }]
+
+    });
+
+
+
+    Highcharts.chart('container7', {
+        chart: {
+            type: 'bar'
+            , backgroundColor: 'transparent'
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['Returned', 'Rejected', 'Draft', 'Submitted', 'Approved'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' '
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            },
+            legend: {
+                enabled: false
+            },
+        },
+
+        credits: {
+            enabled: false
+        },
+        series: [{
+            showInLegend: false,
+            data: [10, 30, 50, 110, 110]
+        }]
+
+    });
+
+    Highcharts.chart('container8', {
+
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+                   , backgroundColor: 'transparent'
+        },
+        title: {
+            text: ''
+        },
+        tooltip: {
+            pointFormat: ''
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{y}'
+                }, dataLabels: {
+                    distance: -50,
+                    color: 'black'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '',
+            data: [
+                ['Submitted', 50],
+                ['Approved', 60],
+                {
+                    name: 'Draft',
+                    y: 125,
+                    sliced: true,
+                    selected: true
+                }
+            ]
+        }]
+    });
+
+    Highcharts.chart('container9', {
+
+        chart: {
+            type: 'column'
+                   , backgroundColor: 'transparent'
+        },
+        title: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['A+ Electric Inc.', 'No Company Assigned', 'JFK Finishes']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            align: 'right',
+            x: -30,
+            verticalAlign: 'top',
+            y: 10,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+            borderColor: '#CCC',
+            borderWidth: 1,
+            shadow: false
+        },
+        tooltip: {
+            headerFormat: '<b>{point.x}</b><br/>',
+            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                dataLabels: {
+                    enabled: true,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+                }
+            }
+        },
+        series: [{
+            name: 'Close',
+            data: [5, 3, 4]
+        }, {
+            name: 'Draft',
+            data: [2, 2, 3]
+        }, {
+            name: 'Submitted',
+            data: [3, 4, 4]
+        }]
+    });
+
+
+    Highcharts.chart('container10', {
+
+
+        chart: {
+            type: 'pie',
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+                   , backgroundColor: 'transparent'
+        },
+        title: {
+            text: ''
+        },
+        tooltip: {
+            pointFormat: ''
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+
+                depth: 35,
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['Submitted', 45.0],
+                ['Approved', 26.8],
+                 ['Returened', 26.8],
+                {
+                    name: 'Rejected',
+                    y: 12.8,
+                    sliced: true,
+                    selected: true
+                }
+            ]
+        }]
+        
+    });
+    //gobin rajneesh
+
+
     Highcharts.theme = {
         colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
            '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
@@ -249,7 +566,14 @@ myApp.onPageInit('main', function (page) {
     });
     
     
+
+  
+
     
+
+
+
+
     
     
     var chart = Highcharts.chart('container2', {

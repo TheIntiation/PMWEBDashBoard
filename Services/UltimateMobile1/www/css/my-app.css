@@ -1,4 +1,122 @@
 /*Css For Our App*/
+
+
+.clear {
+        clear: both;
+    }
+
+    .cont {
+        float: left;
+        width: 100%;
+        background-color: transparent;
+    }
+
+        .cont .left {
+            float: left;
+            width: 48%;
+            background-color: bisque;
+            height: 25%;
+            min-height: 25%;
+            border: 0.25px solid;
+            margin-right: 1px;
+        }
+
+            .cont .left .inner {
+                align-content: center;
+                width: 67%;
+                padding: 1px;
+                margin-left: 6%;
+                font-weight: lighter;
+                color: black;
+                float: left;
+            }
+
+
+        .cont .right {
+            float: left;
+            width: 49%;
+            margin: 1px;
+            background-color: bisque;
+            height: 25%;
+            min-height: 25%;
+            border: 0.25px solid;
+        }
+
+        .cont .full {
+            width: 100%;
+        }
+
+        .cont .right .inner {
+            align-content: center;
+            width: 66%;
+            padding: 1px;
+            margin-left: 6%;
+            font-weight: lighter;
+            color: black;
+            float: left;
+        }
+
+        .cont .left .floatRightTop {
+            background-color: #6495ed;
+            color: white;
+            float: right;
+            width: 23%;
+            ;
+            height: 30%;
+            font-size: medium;
+            padding: 1px;
+            text-align: center;
+        }
+
+        .cont .right .floatRightTop {
+            background-color: #dda0dd;
+            color: white;
+            float: right;
+            width: 25%;
+            height: 30%;
+            font-size: medium;
+            padding: 1px;
+            text-align: center;
+        }
+
+        .cont .left .percentage {
+            width: 100%;
+            height: 30%;
+            font-size: -webkit-xxx-large;
+            text-align: center;
+            color: #6495ed;
+            font-weight: bolder;
+        }
+
+        .cont .right .percentage {
+            width: 100%;
+            height: 30%;
+            font-size: -webkit-xxx-large;
+            text-align: center;
+            color: #dda0dd;
+            font-weight: bolder;
+        }
+
+        .cont .left .bottom {
+            position: relative;
+            font-size: small;
+            color: dimgrey;
+            font-weight: bold;
+            margin: 2px;
+            padding: 2px;
+        }
+
+        .cont .right .bottom {
+            position: relative;
+            font-size: small;
+            color: dimgrey;
+            font-weight: bold;
+            margin: 2px;
+            padding: 2px;
+        }
+
+
+
 .logo_on_menue_bar{
     height: 100%;
     width: 0;
