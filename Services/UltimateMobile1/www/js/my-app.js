@@ -8,6 +8,11 @@ var myApp = new Framework7({
     swipeBackPage: false
 });
 
+var mySwiper = myApp.swiper('.swiper-container', {
+    pagination: '.swiper-pagination'
+});
+
+
 var $$ = Dom7;
 
 var RecordId=0;
@@ -15,11 +20,11 @@ var RecordId=0;
 var isAndroid = Framework7.prototype.device.android === true;
 var isIos = Framework7.prototype.device.ios === true;
 
-var mainView = myApp.addView('.view-main', {
-    // Because we use fixed-through navbar we can enable dynamic navbar
-    dynamicNavbar: true,
-    template7Pages: true
-});
+//var mainView = myApp.addView('.view-main', {
+//    // Because we use fixed-through navbar we can enable dynamic navbar
+//    dynamicNavbar: true,
+//    template7Pages: true
+//});
 
 Template7.global = {
     isArabic: false,
@@ -58,30 +63,32 @@ $$("#Workflow_correspondence").on('click', function () {
 $$("#workflowkpi").on('click', function () {
     mainView.router.loadPage("WorkflowKPI.html");
 });
-$$("#next").on('click',function(){
-   mainView.router.loadPage("main.html") 
-});
-function login(){
-    var username =$$("#email").val();
-    var password=$$("#password").val();
-    mainView.router.loadPage('Home.html');
-}
-$$("#log").on('click',function(){
-    login(); 
-});
-$$("#en").on('click', function(){English();});
-$$("#ar").on('click', function(){
-    Arabic();
-});
-// Callbacks to run specific code for specific pages, for example for About page:
-myApp.onPageInit('about', function (page) {
-    // run createContentPage func after link was clicked
-    $$('.create-page').on('click', function () {
-        createContentPage();
-        CopyRights();
-    });
-});
-// Generate dynamic page
+//$$("#next").on('click', function () {
+//    var username = $$("#txtUsername").val();
+//    var password = $$("#txtPassword").val();
+//    if (username == "" || username == null || username == undefined) {
+//        document.getElementById("msg").innerHTML = "Please Enter User Name";
+//        $('#txtUsername').focus().select();
+//        return;
+//    }
+//    if (password == "" || password == null || password == undefined) {
+//        document.getElementById("msg").innerHTML = "Please Enter Password";
+//        $('#txtPassword').focus().select();
+//        return;
+//    }
+//    //mainView.router.loadPage("WorkflowKPI.html")
+//    var self = this;
+//    self.Service_Login_Validate();
+//    alert(self.userID());
+//    window.location = "main.html";
+//});
+ 
+/**********************************Services****************************
+1.Serv_Login_Validate
+
+*/
+
+
 var dynamicPageIndex = 0;
 function createContentPage() {
 	mainView.router.loadContent(

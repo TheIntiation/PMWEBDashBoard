@@ -1,6 +1,18 @@
 /*Css For Our App*/
 
-
+.lblMessage{
+    color: red;
+    font-size: 15px;
+}
+.password{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 0px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 .clear {
         clear: both;
     }
