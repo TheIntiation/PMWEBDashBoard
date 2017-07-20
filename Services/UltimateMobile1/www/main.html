@@ -31,6 +31,7 @@ swiper-custom {
 }
     
 </style>
+<script type="text/javascript" src="js/JSUI_Dashboard.js"></script>
 <div class="navbar topBar"  >
   <div class="navbar-inner topBar" >
     <div class="left topBar">
@@ -51,7 +52,11 @@ swiper-custom {
           <!--<div   style="display:none"><div id="container" style="min-width: 40%; margin-top:30%; height: 90%; max-width: 100%; margin: 0 auto"></div></div>-->
           <div style="display:none"><div id="container3" style="min-width: 40%; margin-top:30%; height: 90%; max-width: 100%; margin: 0 auto"></div></div>
          <center>
+             <!--<div data-bind="text:UserFullName()" style="color:white"></div>
+             <div style="color:white">sfdfd</div>-->
               <div style="margin-top:10%" class="styled-select blue semi-square">
+                 
+                  <select class="" data-bind="options: ProjectsList, value:selectedProject, optionsText: 'ProjectName', optionsValue: 'Id' "></select>
                   <select>
                     <option>Plot Q</option>
                     <option>Risk Metgation</option>
@@ -62,7 +67,7 @@ swiper-custom {
             <div class="swiper-pagination" style="position: initial"></div>
             <div class="swiper-wrapper" style="margin-bottom: 3%;"> 
               <div class="swiper-slide">
-                  <div id="window8dashboard">
+                  <div >
                       <div class="row">
                           <div class="col-md-6" style="border-width:0px;width:46%;height:120px;background-color:#046399;margin:6% 2% 2% 2%">
                               <span class="kpi_title">Physical Progress</span><br /><br />
@@ -505,5 +510,5 @@ swiper-custom {
     </div>
   </div>
 </div>
+
 </div>
- 
