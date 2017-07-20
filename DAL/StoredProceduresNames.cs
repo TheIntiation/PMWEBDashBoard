@@ -24,8 +24,7 @@ namespace DAL
         public static string GetDelayedWorkflowdocuments = "[dbo].FG_Workflow_GetDocumentsInDelay";
         //@User bigint,@DocId bigint, @EntId bigint,@RecId bigint, @RecTypeId bigint,@ObjTypeId bigint, @ProjectId bigint,
         //@Comment nvarchar(max)
-        public static string finalApproveForWorkflow = "[dbo].USPMC_FinalApproveWorkflowDocument";
-        
+        public static string finalApproveForWorkflow = "[dbo].USPMC_FinalApproveWorkflowDocument";       
 
     }
 

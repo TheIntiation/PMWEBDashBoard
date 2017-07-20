@@ -116,11 +116,6 @@
          </ul>
      </div>
     </div>
-    <div class="panel panel-right panel-cover">
-      <div class="content-block">
-        
-      </div>
-    </div>
     <div class="views">
       <div class="view view-main">
         <div class="navbar"style="background-color:#3598DB; display:none">
@@ -138,9 +133,13 @@
                  <div style="" class="login_form">
                     <h2 style="text-align: center;color: rgb(50,138,174);">HFD EXECUTIVE APP</h2>
                         <form action="/action_page.php">
-                            <input type="text" id="fname" name="firstname" placeholder="Username">
-                            <input type="text" id="lname" name="lastname" placeholder="Password">
-                            <input id ="next"  class="submitbtn" value="Submit">
+                            <input type="text" id="txtUsername" name="txtUsername" placeholder="Username">
+                            <input type="password" class="password"  id="txtPassword" name="txtPassword"  placeholder="Password">
+                            <input id ="next"  type="button" data-bind="click:Service_Login_Validate" class="submitbtn" value="Submit">
+                            <center>
+                                <label id="msg" class="lblMessage"></label>
+                            </center>
+                            
                         </form>
                        <div style="margin-top: 10%;">
                           <center>  
@@ -179,8 +178,18 @@
     <script type="text/javascript" src="js/Getting.js"></script>
     <script type="text/javascript" src="js/Posting.js"></script>
     <script type="text/javascript" src="js/Vlaidation.js"></script>
-      <script type="text/javascript" src="js/highcharts.js"></script>
-      <script type="text/javascript" src="js/highcharts-3d.js"></script>
+    <script type="text/javascript" src="js/highcharts.js"></script>
+    <script type="text/javascript" src="js/highcharts-3d.js"></script>
     <script type="text/javascript" src="js/export-data.js"></script>
+    <script type="text/javascript" src="js/knockout-3.1.0.js"></script>
+    <script type="text/javascript" src="js/knockout-3.1.0.debug.js"></script>
+    <script type="text/javascript" src="js/knockout.validation.js"></script>
+    <script type="text/javascript" src="js/ServicesUI.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var owner = new ServicesUI();
+            ko.applyBindings(owner);
+        });
+      </script>
   </body>
 </html>
