@@ -13,18 +13,12 @@ namespace Services.Controllers
     [EnableCors("*", "*", "*")]
     public class UserManagementController : ApiController
     {
-        public  class UserObject {
-            public  string UserName { get; set; }
-            public  string Password { get; set; }
-        }
         [HttpPost]
         [Route("api/UserManagement/LoginUserValidation")]
-        public HttpResponseMessage LoginUserValidation(UserObject UserObjectd)
+        public HttpResponseMessage LoginUserValidation(LoginDTO LoginDTO)
         {
-            UserObject obj = new Controllers.UserManagementController.UserObject();
-            obj = UserObjectd;
             DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.UserManagement.LoginUserValidation(obj.UserName, obj.Password);
+            returnValue = DAL.UserManagement.LoginUserValidation(LoginDTO.UserName, LoginDTO.Password);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
