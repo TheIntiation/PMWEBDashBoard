@@ -6,11 +6,78 @@ using System.Threading.Tasks;
 
 namespace DataModel
 {
+    public class GoogleMapAddress
+    {
+        public long projectid { get; set; }
+        public string GoogleAddress { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
+    }
+    public class PortifolioSummryOne
+    {
+        public long ProjectId { get; set; }
+        public long ProjCurrency { get; set; }
+        public string GoogleAddress { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectNumber { get; set; }
+        public string ProjectManager { get; set; }
+        public string ProjectExecutive { get; set; }
+        public string Superintendent { get; set; }
+        public string ProjectType { get; set; }
+        public string Program { get; set; }
+        public string ProgramName { get; set; }
+        public string Property { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
+        public string StateKey { get; set; }
+        public string StatusKey { get; set; }
+        public string Status { get; set; }
+        public decimal OriginalBudget { get; set; }
+        public decimal BudgetChanges { get; set; }
+        public decimal AnticipatedBudget { get; set; }
+        public decimal OriginalCommitments { get; set; }
+        public decimal CommitmentsRevisions { get; set; }
+        public decimal AnticipatedCost { get; set; }
+        public decimal Forecasts { get; set; }
+        public decimal ForecastsVariance { get; set; }
+        public decimal ActualCosts { get; set; }
+        public decimal CostPctComplete { get; set; }
+        public decimal PhysicalPctComplete { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? FinishDate { get; set; }
+        public long? Duration { get; set; }
+        public DateTime? BaselineStartDate { get; set; }
+        public DateTime? BaselineFinishDate { get; set; }
+        public long? Days { get; set; }
+
+    }
+
+    public class PortifolioSummryTwo
+    {
+        public decimal WorkUnderContract { get; set; }
+        public decimal WorkinProgress { get; set; }
+        public decimal UnstartedContracts { get; set; }
+        public decimal ContractChanges { get; set; }
+        public decimal ProjectedCost { get; set; }
+
+    }
+        public class ProgramsList
+    {
+        public long Id { get; set; }
+        public string Name { get; set; }
+    }
+
+
     public class GetDocumentsInDelay
     {
         public int totaldelay { get; set; }
         public string Entity { get; set; }
         public string RecordType { get; set; }
+    }
+    public class ProjectList
+    {
+        public long Id { get; set; }
+        public string ProjectName { get; set; }
     }
     public class Workflow_GetInboxByUser
     {

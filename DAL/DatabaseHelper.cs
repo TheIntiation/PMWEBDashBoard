@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoogleMaps.LocationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -76,6 +77,12 @@ namespace DAL
             return myObject.HasValue ? (object)myObject.Value : (object)DBNull.Value;
         }
 
+        public static object GetObjectOrlongDBNull(this long? myObject)
+        {
+            return myObject.HasValue ? (object)myObject.Value : (object)DBNull.Value;
+        }
+
+
         public static object GetObjectOrDBNull(this DateTime? myObject)
         {
             return myObject.HasValue ? (object)myObject.Value : (object)DBNull.Value;
@@ -85,9 +92,26 @@ namespace DAL
         {
             return myObject.HasValue ? (object)myObject.Value : (object)DBNull.Value;
         }
-        public static string GetDataReaderString(this SqlDataReader reader , string ColumnName )
+        public static string GetDataReaderString(this SqlDataReader reader, string ColumnName)
         {
-            return reader[ColumnName] == DBNull.Value ? null : (string)reader[ColumnName]; 
+            return reader[ColumnName] == DBNull.Value ? null : (string)reader[ColumnName];
+        }
+
+        public static double Getlatitude(string address)
+        {
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(address);
+
+            double latitude = point.Latitude;
+            return latitude;
+        }
+        public static double Getlongitude(string address)
+        {
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(address);
+
+            double longitude = point.Longitude;
+            return longitude;
         }
 
         public static int? GetDataReaderNullableInt(this SqlDataReader reader, string ColumnName)
@@ -98,6 +122,11 @@ namespace DAL
         public static decimal? GetDataReaderNullableDecimal(this SqlDataReader reader, string ColumnName)
         {
             return reader[ColumnName] == DBNull.Value ? (decimal?)null : (decimal?)reader[ColumnName];
+        }
+
+        public static long? GetDataReaderNullablelonfg(this SqlDataReader reader, string ColumnName)
+        {
+            return reader[ColumnName] == DBNull.Value ? (long?)null : (long?)reader[ColumnName];
         }
 
         public static DateTime? GetDataReaderDateTime(this SqlDataReader reader, string ColumnName)

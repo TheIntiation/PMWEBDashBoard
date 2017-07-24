@@ -12,13 +12,42 @@ namespace Services.Controllers
     [EnableCors("*", "*", "*")]
     public class WorkFlowController : ApiController
     {
-        
+        [HttpGet]
+        [Route("api/WorkFlow/GetPortifolioSummryDashbaord")]
+        public HttpResponseMessage GetPortifolioSummryDashbaord(int programid)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetPortifolioSummryDashbaord(programid);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetProgramsList")]
+        public HttpResponseMessage GetProgramsList(int UserId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetProgramsList(UserId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
         [HttpGet]
         [Route("api/WorkFlow/GetAll")]
         public HttpResponseMessage GetAll()
         {
             DataTransferModel returnValue = new DataTransferModel();
             //returnValue = DAL.WorkFlow.GetAll();
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetDocumentPunchList")]
+        public HttpResponseMessage GetDocumentPunchList(int projectid)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetDocumentPunchList(projectid);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
@@ -89,10 +118,20 @@ namespace Services.Controllers
         }
         [HttpGet]
         [Route("api/WorkFlow/getworkflowdetailsbymodule")]
-        public HttpResponseMessage GetWorkflowDetailByModuleAndUser(string username,int moduleId)
+        public HttpResponseMessage GetWorkflowDetailByModuleAndUser(string username, int moduleId)
         {
             DataTransferModel returnValue = new DataTransferModel();
             returnValue = DAL.WorkFlow.getWorkflowDetailByModule(username, moduleId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetALLUserProjects")]
+        public HttpResponseMessage GetALLUserProjects(long UserId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetALLUserProjects(UserId);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }

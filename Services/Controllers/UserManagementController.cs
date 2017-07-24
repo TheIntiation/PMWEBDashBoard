@@ -10,14 +10,15 @@ using System.Web.Http.Cors;
 
 namespace Services.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class UserManagementController : ApiController
     {
         [HttpPost]
         [Route("api/UserManagement/LoginUserValidation")]
-        public HttpResponseMessage LoginUserValidation(string UserName, string Password)
+        public HttpResponseMessage LoginUserValidation(LoginDTO LoginDTO)
         {
             DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.UserManagement.LoginUserValidation(UserName, Password);
+            returnValue = DAL.UserManagement.LoginUserValidation(LoginDTO.UserName, LoginDTO.Password);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
