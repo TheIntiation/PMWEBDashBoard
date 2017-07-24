@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="css/framework7-icons.css">
     <link rel="stylesheet" href="css/my-app.css">
     <style>
-        .kpi_title{
-    margin-left:10px;
-    margin-top:4px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size:14px;
-    font-weight:normal;
-    color:white;
-    display: inline-block;
-}
+        .kpi_title {
+            margin-left: 10px;
+            margin-top: 4px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            color: white;
+            display: inline-block;
+        }
+
         swiper-custom {
             position: relative;
             height: 100%;
@@ -30,7 +31,6 @@
         }
 
         .swiper-slide {
-         
         }
 
             .swiper-slide span {
@@ -41,13 +41,13 @@
             }
 
         .swiper-pagination-bullet {
-              width: 10px;
-    height: 10px;
-    background: none;
-    border: 1px solid #aaa;
-    border-radius: 1 0 0 0;
-    opacity: 1;
-    cursor: pointer;
+            width: 10px;
+            height: 10px;
+            background: none;
+            border: 1px solid #aaa;
+            border-radius: 1 0 0 0;
+            opacity: 1;
+            cursor: pointer;
         }
 
         .swiper-pagination-bullet-active {
@@ -55,6 +55,10 @@
             border-color: #007aff;
         }
     </style>
+   
+ 
+ 
+    
 </head>
 <body>
     <div class="statusbar-overlay"></div>
@@ -79,73 +83,26 @@
                         <div class="item-inner">
                             <div class="item-title menue_font">Work Flow Inbox</div>
                             <div class="item-after" style="padding-bottom: 8%;padding-right: 10%;">
-                                <i class="icon demo-icon-2"><span class="badge bg-red ">40</span></i>
+                                <i class="icon demo-icon-2"><span class="badge bg-red " data-bind="text:TotalWorkFlowPendingItems">40</span></i>
                             </div>
                         </div>
                     </a>
                     <div class="accordion-item-content">
                         <div class="content-block">
                             <ul>
-                                <li id="Workflow_correspondence" style="background-color:#3598db;">
+                                <li data-bind="foreach:MenueList" style="background-color:#3598db;">
                                     <a class="item-link item-content">
                                         <div class="item-inner" style="background-image:none">
-                                            <div class="item-title menue_font">Correspondence</div>
+                                            <div class="item-title menue_font" data-bind="text:RecordType">Correspondence</div>
                                             <div class="item-after" style="padding-bottom: 8%;padding-right: 4%;">
                                                 <i class="icon demo-icon-2">
-                                                    <span class="badge bg-red">3</span>
+                                                    <span class="badge bg-red" data-bind="text:TotalPendingItems">3</span>
                                                 </i>
                                             </div>
                                         </div>
                                     </a>
                                 </li>
-                                <li id="Workflow_correspondence2" style="background-color:#3598db;">
-                                    <a href="main.html" class="item-link item-content">
-                                        <div class="item-inner" style="background-image:none">
-                                            <div class="item-title menue_font">RFIs</div>
-                                            <div class="item-after" style="padding-bottom: 8%;padding-right: 4%;">
-                                                <i class="icon demo-icon-2">
-                                                    <span class="badge bg-red">17</span>
-                                                </i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li id="Workflow_correspondence3" style="background-color:#3598db;">
-                                    <a href="main.html" class="item-link item-content">
-                                        <div class="item-inner" style="background-image:none">
-                                            <div class="item-title menue_font">Transmittals</div>
-                                            <div class="item-after" style="padding-bottom: 8%;padding-right: 4%;">
-                                                <i class="icon demo-icon-2">
-                                                    <span class="badge bg-red">12</span>
-                                                </i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li id="Workflow_correspondence4" style="background-color:#3598db;">
-                                    <a href="main.html" class="item-link item-content">
-                                        <div class="item-inner" style="background-image:none">
-                                            <div class="item-title menue_font">Routing Slip</div>
-                                            <div class="item-after" style="padding-bottom: 8%;padding-right: 4%;">
-                                                <i class="icon demo-icon-2">
-                                                    <span class="badge bg-red">5</span>
-                                                </i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li id="Workflow_correspondence5" style="background-color:#3598db;">
-                                    <a href="main.html" class="item-link item-content">
-                                        <div class="item-inner" style="background-image:none">
-                                            <div class="item-title menue_font">Snag List</div>
-                                            <div class="item-after" style="padding-bottom: 8%;padding-right: 4%;">
-                                                <i class="icon demo-icon-2">
-                                                    <span class="badge bg-red">3</span>
-                                                </i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -179,25 +136,638 @@
             <div data-page="dashboard" class="page">
                 <div class="page-content" style="background-image: url('./logos/kbg.jpg');background-size:cover;  background-repeat: no-repeat;  background-attachment: fixed;">
                     <center>
-                        <!--<div data-bind="text:UserFullName()" style="color:white"></div>
-            <div style="color:white">sfdfd</div>-->
                         <div style="margin-top:10%" class="styled-select blue semi-square">
-
                             <select class="" data-bind="options: ProjectsList, value:selectedProject, optionsText: 'ProjectName', optionsValue: 'Id' "></select>
-                            <!--<select>
-                                <option>Plot Q</option>
-                                <option>Risk Metgation</option>
-                            </select>-->
                         </div>
                     </center>
-                    <div style="margin-top:5%;" class="swiper-container" >
+                    <div style="margin-top:5%;" class="swiper-container">
                         <div class="swiper-pagination" style="position: initial"></div>
                         <div class="swiper-wrapper" style="margin-bottom: 3%;height: 100%;">
                             <div class="swiper-slide" style="margin-bottom: 3%;height: 100%;">
                                 <div>
                                     <div class="row">
+                                  
+                                        <div class="col-md-12" style="border-width:0px;width:98%;height:100%;background-color:transparent;margin:6% 2% 1% 2%">
+                                            <div id="map" style="width: 345px; height: 300px;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:98%;height:26px;background-color:#3598db;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                display: block;
+                                                margin: 2px;
+                                                font-size: 14px;
+                                                color: white;">Corporate Overview</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;
+                                                    ">Work Under Contract:</span>
+                                        </div>
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;" data-bind="text:WorkUnderContract">$3,669,377,462.77</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;
+                                                    ">Work in Progress (WIP):</span>
+                                        </div>
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;" data-bind="text:WorkinProgress">$1,477,778,305.02</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;
+                                                    ">Unstarted Contracts:</span>
+                                        </div>
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;" data-bind="text:UnstartedContracts">$2,191,599,157.76</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;
+                                                    ">Contract Changes:</span>
+                                        </div>
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;" data-bind="text:ContractChanges">
+                                                $304,854,863.66
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;
+                                                    ">Projected Cost:</span>
+                                        </div>
+                                        <div class="col-md-6" style="border-width:0px;width:46%;height:21px;background-color:#ffffff;margin:0% 2% 2% 2%">
+                                            <span style="text-align: center;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;" data-bind="text:ProjectedCost">
+                                                $5,329,438,854.98
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:98%;height:26px;background-color:#3598db;margin:0% 2% 0% 2%">
+                                            <span style="text-align: left;
+                                                display: block;
+                                                margin: 2px;
+                                                font-size: 13px;
+                                                color: white;padding-left: 5px;">Program:  Commercial</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#d3d3d3;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:30%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;padding-left: 5px;
+                                                    ">2012-2011/41:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:70%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;padding-left: 5px;
+                                                    ">Configuring embedded intelligence Context-Rich Systems</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Budget:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$1,289,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Cost:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$152,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Profit:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$1,137,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Baseline Finish Date:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">08-31-2010</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#d3d3d3;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:30%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;padding-left: 5px;
+                                                    ">KNPE:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:70%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;padding-left: 5px;
+                                                    ">State of Art Universities</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Budget:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$1,289,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Cost:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$152,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Profit:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$1,137,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Baseline Finish Date:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">08-31-2010</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:98%;height:26px;background-color:#3598db;margin:2% 2% 0% 2%">
+                                            <span style="text-align: left;
+                                                display: block;
+                                                margin: 2px;
+                                                font-size: 13px;
+                                                color: white;padding-left: 5px;">Program:  Financial</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#d3d3d3;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:30%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;padding-left: 5px;
+                                                    ">B-1001:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:70%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;padding-left: 5px;
+                                                    ">Atlanta Bank Branch</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Budget:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$1,289,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Cost:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$152,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Profit:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$1,137,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Baseline Finish Date:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">08-31-2010</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#d3d3d3;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:30%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;padding-left: 5px;
+                                                    ">3007:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:70%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: bold;padding-left: 5px;
+                                                    ">Birmingham Bank</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Budget:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$1,289,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Cost:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$152,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Projected Profit:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">$1,137,000.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="border-width:0px;width:96%;height:100%;background-color:#ffffff;margin:0% 2% 0% 2%">
+                                            <div class="row">
+                                                <div class="col-md-3" style="width:40%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">Baseline Finish Date:</span>
+                                                </div>
+                                                <div class="col-md-9" style="width:60%">
+                                                    <span style="text-align: left;
+                                                        display: block;
+                                                        margin: 1px;
+                                                        font-size: 11px;
+                                                        color: black;
+                                                        font-weight: normal;padding-left: 5px;
+                                                    ">08-31-2010</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" style="margin-bottom: 3%;height: 100%;">
+                                <div>
+                                    <div class="row">
                                         <div class="col-md-6" style="border-width:0px;width:46%;height:120px;background-color:#046399;margin:6% 2% 2% 2%">
-                                            <span class="kpi_title"style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <span class="kpi_title" style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:white;
     display: inline-block;">Physical Progress</span><br /><br />
                                             <table width="100%" border="0" style="padding-top:10%;border-spacing: 0;
@@ -216,7 +786,7 @@
                                         <div class="col-md-6" style="border-width:0px;width:46%;height:120px;background-color:#f704ff;margin:6% 2% 2% 2%">
                                             <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#ffffff;
-    display: inline-block;"   >7 / July</span><br /><br />
+    display: inline-block;">7 / July</span><br /><br />
                                             <table width="100%" border="0" style="padding-top:0%;border-spacing: 0;
        border-collapse: collapse;">
                                                 <tr>
@@ -254,7 +824,7 @@
 
                                         </div>
                                         <div class="col-md-6" style="border-width:0px;width:46%;height:120px;background-color:#222222;margin:0% 2% 2% 2%">
-                                            <span class="kpi_title"style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <span class="kpi_title" style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:white;
     display: inline-block;">Duration</span><br /><br />
                                             <table width="100%" border="0" style="padding-top:10%;border-spacing: 0;
@@ -345,14 +915,14 @@
                                         </div>
                                     </div>
 
-                                   <div class="row">
+                                    <div class="row">
                                         <div class="col-md-12" style="border-width:0px;width:100%;height:200px;background-color:#2c2c2d;margin:0% 2% 2% 2%">
 
                                             <div id="container" style="min-width: 40%; margin-top:0%; height: 100%; max-width: 100%; margin: 0 auto"></div>
 
                                         </div>
                                     </div>
-                                   
+
                                     <div class="row">
                                         <div class="col-md-12" style="border-width:0px;width:100%;height:200px;margin:0% 2% 2% 2%">
 
@@ -374,7 +944,7 @@
                                                 <div class="col-md-3" style="width:40%; ">
                                                     <span style="padding-left:2%;padding-top:0%;  display: inline-block;color:white;font-size:12px;">Contractor:</span>
                                                 </div>
-                                                <div class="col-md-9" style="width:60%;text-align:left;" >
+                                                <div class="col-md-9" style="width:60%;text-align:left;">
                                                     <span style="text-align:left;padding-left:0%;padding-top:0%; display: inline-block;color:white;font-size:12px;">Hillcrest General Contractors</span>
                                                 </div>
                                             </div>
@@ -596,9 +1166,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12" style="border-width:0px;width:100%;height:30px;background-color:#3598db;margin:6% 2% 0% 2%">
-                                            <center><span class="kpi_title"  style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <center>
+                                                <span class="kpi_title" style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:white;
-    display: inline-block;">Gate Way Status</span></center><br /><br />
+    display: inline-block;">Gate Way Status</span>
+                                            </center><br /><br />
                                         </div>
                                         <div class="col-md-12" style="border-width:0px;width:98%;height:350px;background-color:#d5e8f5;margin:0% 2% 2% 2%">
                                             <div id="containerddd8" style="width:98%;height:300px; background-color:#d5e8f5;margin: 0 auto"></div>
@@ -611,84 +1183,94 @@
                                 <div id="dd">
                                     <div class="row">
                                         <div class="col-md-12" style="border-width:0px;width:100%;height:30px;background-color:#3598db;margin:6% 2% 0% 2%">
-                                            <center><span class="kpi_title"  style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <center>
+                                                <span class="kpi_title" style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:white;
-    display: inline-block;">Change Events</span></center><br /><br />
+    display: inline-block;">Change Events</span>
+                                            </center><br /><br />
                                         </div>
                                         <div class="col-md-12" style="border-width:0px;width:98%;height:350px;background-color:#d5e8f5;margin:0% 2% 2% 2%">
                                             <span class="kpi_title" style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;" >Total Value of Pending CEs:  </span><br />
+    display: inline-block;">Total Value of Pending CEs:</span><br />
                                             <span class="kpi_title" style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Number of Overdue CORs: 6</span><br />
+    display: inline-block;">Number of Overdue CORs: 6</span><br />
                                             <div id="container8" style="width:98%;height:300px; background-color:#d5e8f5;margin: 0 auto"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12" style="border-width:0px;width:100%;height:30px;background-color:#3598db;margin:6% 2% 0% 2%">
-                                            <center><span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <center>
+                                                <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#ffffff;
-    display: inline-block;"  >Punch Lists</span></center><br /><br />
+    display: inline-block;">Punch Lists</span>
+                                            </center><br /><br />
                                         </div>
                                         <div class="col-md-12" style="border-width:0px;width:98%;height:450px;background-color:#d5e8f5;margin:0% 2% 2% 2%">
-                                            <span class="kpi_title"style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <span class="kpi_title" style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Total Outstanding Punchlist Items: 21  </span><br />
-                                            <span class="kpi_title"style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+    display: inline-block;">Total Outstanding Punchlist Items: 21</span><br />
+                                            <span class="kpi_title" style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Total Overdue Punchlist Items: 1</span><br />
+    display: inline-block;">Total Overdue Punchlist Items: 1</span><br />
                                             <div id="container9" style="width:98%;height:400px; background-color:#d5e8f5;margin: 0 auto"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12" style="border-width:0px;width:100%;height:30px;background-color:#3598db;margin:6% 2% 0% 2%">
-                                            <center><span  style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <center>
+                                                <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#ffffff;
-    display: inline-block;"  >Workflow in Process</span></center><br /><br />
+    display: inline-block;">Workflow in Process</span>
+                                            </center><br /><br />
                                         </div>
                                         <div class="col-md-12" style="border-width:0px;width:98%;height:450px;background-color:#d5e8f5;margin:0% 2% 2% 2%">
-                                            <span  style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
-    color:#222222;
-    display: inline-block;"  >Total Outstanding Workflow Documents: 36  </span><br />
                                             <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Total Overdue Workflow Action Items: 36</span><br />
+    display: inline-block;">Total Outstanding Workflow Documents: 36</span><br />
+                                            <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+    color:#222222;
+    display: inline-block;">Total Overdue Workflow Action Items: 36</span><br />
                                             <div id="container10" style="width:98%;height:400px; background-color:#d5e8f5;margin: 0 auto"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12" style="border-width:0px;width:100%;height:30px;background-color:#3598db;margin:6% 2% 0% 2%">
-                                            <center><span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <center>
+                                                <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#ffffff;
-    display: inline-block;"  >Requests For Information</span></center><br /><br />
+    display: inline-block;">Requests For Information</span>
+                                            </center><br /><br />
                                         </div>
                                         <div class="col-md-12" style="border-width:0px;width:98%;height:350px;background-color:#d5e8f5;margin:0% 2% 2% 2%">
                                             <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Average Review Time for RFIs:  1,370 days</span><br />
+    display: inline-block;">Average Review Time for RFIs:  1,370 days</span><br />
                                             <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Total Overdue RFIs:  7</span><br />
+    display: inline-block;">Total Overdue RFIs:  7</span><br />
                                             <div id="container7" style="width:98%;height:300px; background-color:#d5e8f5;margin: 0 auto"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12" style="border-width:0px;width:100%;height:30px;background-color:#3598db;margin:6% 2% 0% 2%">
-                                            <center><span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
+                                            <center>
+                                                <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#ffffff;
-    display: inline-block;"  >Submittals by Status</span></center><br /><br />
+    display: inline-block;">Submittals by Status</span>
+                                            </center><br /><br />
                                         </div>
                                         <div class="col-md-12" style="border-width:0px;width:98%;height:475px;background-color:#d5e8f5;margin:0% 2% 2% 2%">
                                             <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Average Review Time for Submittals:  690.4 days</span><br />
+    display: inline-block;">Average Review Time for Submittals:  690.4 days</span><br />
                                             <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Total Overdue Upstream Submittals:  3</span><br />
+    display: inline-block;">Total Overdue Upstream Submittals:  3</span><br />
                                             <span style="margin-left:10px;margin-top:4px;font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:14px;font-weight:normal;
     color:#222222;
-    display: inline-block;"  >Total Overdue Downstream Submittals:  5</span><br />
+    display: inline-block;">Total Overdue Downstream Submittals:  5</span><br />
                                             <div id="container6" style="width:98%;height:400px; margin: 0 auto"></div>
                                         </div>
                                     </div>
@@ -718,28 +1300,28 @@
                 </div>
             </div>
             <!--<div class="toolbar tabbar tabbar-labels" style="display: block;
-    position: absolute;
-    bottom: 7%;
-    width: 100%;">
-                <div class="toolbar-inner">
-                    <a id="HomeTab" href="main.html" class="tab-link active" style="color:white;">
-                        <i class="icon f7-icons" style="color:white;">home_fill</i>
-                        <span class="tabbar-label" style="color:white;">Home</span>
-                    </a>
-                    <a id="Setting" href="Setting.html" class="tab-link" style="color:white;">
-                        <i class="icon f7-icons" style="color:white;">
-                            settings_fill
-                        </i>
-                        <span class="tabbar-label" style="color:white;">Setting</span>
-                    </a>
-                    <a id="Logout" class="tab-link" style="color:white;">
-                        <i class="icon f7-icons" style="color:white;">logout_fill</i>
-                        <span class="tabbar-label" style="color:white;">Logout</span>
-                    </a>
-                </div>
-            </div>-->
+            position: absolute;
+            bottom: 7%;
+            width: 100%;">
+                        <div class="toolbar-inner">
+                            <a id="HomeTab" href="main.html" class="tab-link active" style="color:white;">
+                                <i class="icon f7-icons" style="color:white;">home_fill</i>
+                                <span class="tabbar-label" style="color:white;">Home</span>
+                            </a>
+                            <a id="Setting" href="Setting.html" class="tab-link" style="color:white;">
+                                <i class="icon f7-icons" style="color:white;">
+                                    settings_fill
+                                </i>
+                                <span class="tabbar-label" style="color:white;">Setting</span>
+                            </a>
+                            <a id="Logout" class="tab-link" style="color:white;">
+                                <i class="icon f7-icons" style="color:white;">logout_fill</i>
+                                <span class="tabbar-label" style="color:white;">Logout</span>
+                            </a>
+                        </div>
+                    </div>-->
         </div>
-       
+
     </div>
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -756,6 +1338,8 @@
     <script type="text/javascript" src="js/knockout-3.1.0.debug.js"></script>
     <script type="text/javascript" src="js/knockout.validation.js"></script>
     <script type="text/javascript" src="js/DashboardUI.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7XgD17kwbsbdgl92Q26_suKecVsbS37Y&callback=initMap"
+            async defer></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var owner = new DashboardUI();
