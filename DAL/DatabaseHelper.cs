@@ -76,6 +76,12 @@ namespace DAL
             return myObject.HasValue ? (object)myObject.Value : (object)DBNull.Value;
         }
 
+        public static object GetObjectOrlongDBNull(this long? myObject)
+        {
+            return myObject.HasValue ? (object)myObject.Value : (object)DBNull.Value;
+        }
+
+
         public static object GetObjectOrDBNull(this DateTime? myObject)
         {
             return myObject.HasValue ? (object)myObject.Value : (object)DBNull.Value;
@@ -98,6 +104,11 @@ namespace DAL
         public static decimal? GetDataReaderNullableDecimal(this SqlDataReader reader, string ColumnName)
         {
             return reader[ColumnName] == DBNull.Value ? (decimal?)null : (decimal?)reader[ColumnName];
+        }
+
+        public static long? GetDataReaderNullablelonfg(this SqlDataReader reader, string ColumnName)
+        {
+            return reader[ColumnName] == DBNull.Value ? (long?)null : (long?)reader[ColumnName];
         }
 
         public static DateTime? GetDataReaderDateTime(this SqlDataReader reader, string ColumnName)
