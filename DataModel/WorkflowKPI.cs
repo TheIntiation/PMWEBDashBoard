@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataModel
 {
- 
+
 
     public class ActiveWorkflowDocumentsByProject
     {
@@ -19,7 +19,7 @@ namespace DataModel
         public long RecordTypeId { get; set; }
         public string RecordType { get; set; }
         public long ObjectId { get; set; }
-        
+
         public long EntityId { get; set; }
         public string Entity { get; set; }
         public string DocumentDescription { get; set; }
@@ -55,5 +55,35 @@ namespace DataModel
         public DateTime? DueDateOfCurrentPendingStep { get; set; }
         public long ActionId { get; set; }
 
+    }
+
+    public class ChartDetail
+    {
+        public string RecordName { get; set; }
+        public long CountVal { get; set; }
+    }
+
+    public class ActiveDocumentPerProjectChart
+    {
+        public string RecordName { get; set; }
+        public long CountVal { get; set; }
+    }
+
+    public class DelayedDocumentPerProjectChart
+    {
+        public string RecordName { get; set; }
+        public long CountVal { get; set; }
+    }
+
+    public class DocManagerRFIs
+    {
+        public string StatusName { get; set; }
+        public long CountVal { get; set; }
+    }
+
+    public class DocManagerCOs
+    {
+        public string StatusName { get; set; }
+        public long CountVal { get; set; }
     }
 }
