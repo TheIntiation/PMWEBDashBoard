@@ -86,4 +86,38 @@ namespace DataModel
         public string StatusName { get; set; }
         public long CountVal { get; set; }
     }
+
+    public class StageGatesSnap
+    {
+       // GateId GateDescrption  CountActivitiesDone TotalActivities Percentage
+
+        public long GateId { get; set; }
+         public string GateDescrption { get; set; }
+        public long CountActivitiesDone { get; set; }
+        public long TotalActivities { get; set; }
+        public float Percentage { get; set; }
+    }
+
+    public class CostSnap
+    {
+        // id	ProjectName	ProjectNumber	CommitmentCode	Description	CurrencyId	CurrencyCode	OriginalCommitment	
+        //Invoiced	ApprovedChanges	RevisedContrcatSum	InvoicedPercentage	CommitmentType
+
+
+        public long id { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectNumber { get; set; }
+        public string CommitmentCode { get; set; }
+        public string Description { get; set; }
+        public long CurrencyId { get; set; }
+        public string CurrencyCode { get; set; }
+        public float OriginalCommitment { get; set; }
+        public float Invoiced { get; set; }
+
+        public float ApprovedChanges { get; set; }
+        public float RevisedContrcatSum { get; set; }
+
+        public float InvoicedPercentage { get; set; }
+        public string CommitmentType { get; set; }
+    }
 }

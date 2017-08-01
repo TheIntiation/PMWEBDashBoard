@@ -33,8 +33,10 @@ namespace DAL
         public static string getDelayedDocumentsChart = "[dbo].[USPMC_APIWorkflow_DelayedDocumnets]";
         public static string getDocManager_RFIAPI = "[dbo].[uspmc_DocManager_RFIAPI]";
         public static string getDocManager_COChart = "[dbo].[uspmc_document_management_dashboard_changeeventCharts]";
-        //test
-        
+        public static string getStageGatesSnap = "[dbo].[uspmc_stageGatesSnap]";
+        public static string getCostSnap = "[dbo].[uspmc_CostSnap]";
+        //uspmc_stageGatesSnap
+
 
 
 

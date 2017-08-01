@@ -82,6 +82,27 @@ namespace Services.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
+
+
+        [HttpGet]
+        [Route("api/WorkFlowKPI/getStageGatesSnap")]
+        public HttpResponseMessage getStageGatesSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkflowKPI.getStageGatesSnap(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlowKPI/getCostSnap")]
+        public HttpResponseMessage getCostSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkflowKPI.getCostSnap(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
     }
 }
 
