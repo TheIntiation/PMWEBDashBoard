@@ -23,6 +23,9 @@ namespace DAL
         //@User bigint,@DocId bigint, @EntId bigint,@RecId bigint, @RecTypeId bigint,@ObjTypeId bigint, @ProjectId bigint,
         //@Comment nvarchar(max)
         public static string finalApproveForWorkflow = "[dbo].USPMC_FinalApproveWorkflowDocument";
+        public static string approveForWorkflow = "[dbo].USPMC_ApproveWorkflowDocument";
+        public static string rejectForWorkflow = "[dbo].USPMC_RejectWorkflowdocument";
+        public static string returnForWorkflow = "[dbo].USPMC_ReturnWorkflowDocument";
         public static string GetALLUserProjects = "[dbo].GetALLUserProjects";
         public static string uspmc_rpt_GetPunchLists = "[dbo].uspmc_rpt_GetPunchLists";
         public static string GetProgramsList = "[dbo].GetProgramsList";
