@@ -6,10 +6,117 @@ using System.Threading.Tasks;
 
 namespace DataModel
 {
+    public class CostSnap
+    {
+        // id	ProjectName	ProjectNumber	CommitmentCode	Description	CurrencyId	CurrencyCode	OriginalCommitment	
+        //Invoiced	ApprovedChanges	RevisedContrcatSum	InvoicedPercentage	CommitmentType
+
+
+        public long id { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectNumber { get; set; }
+        public string CommitmentCode { get; set; }
+        public string Description { get; set; }
+        public long CurrencyId { get; set; }
+        public string CurrencyCode { get; set; }
+        public float OriginalCommitment { get; set; }
+        public float Invoiced { get; set; }
+
+        public float ApprovedChanges { get; set; }
+        public float RevisedContrcatSum { get; set; }
+
+        public float InvoicedPercentage { get; set; }
+        public string CommitmentType { get; set; }
+    }
+    public class exective_dashboard_cost_pic
+    {
+        public byte[] FileContent { get; set; }
+        public string FileContentBase64 { get; set; }
+   
+    }
+    public class ScheduleSnap
+    {
+        //Start Finish  BFinish Bstart  Cost ActualCost  
+        //    StatusDate DurationPast    PastPercentage DurationRemaining   RemainingPercentage
+        public DateTime Start { get; set; }
+        public DateTime Finish { get; set; }
+        public DateTime StatusDate { get; set; }
+        public long DurationPast { get; set; }
+        public float PastPercentage { get; set; }
+        public long DurationRemaining { get; set; }
+        public float RemainingPercentage { get; set; }
+
+    }
+    public class exective_dashboard_cost
+    {
+        public double ActualCost { get; set; }
+        public double AnticipatedBudget { get; set; }
+        public double AnticipatedCost { get; set; }
+        public double Forecast { get; set; }
+        public double Variance { get; set; }
+        public double ForeCastVariance { get; set; }
+    }
+
+
+    public class StageGatesSnap
+    {
+        // GateId GateDescrption  CountActivitiesDone TotalActivities Percentage
+
+        public long GateId { get; set; }
+        public string GateDescrption { get; set; }
+        public long CountActivitiesDone { get; set; }
+        public long TotalActivities { get; set; }
+        public float Percentage { get; set; }
+    }
+
+    public class DocManagerRFIs
+    {
+        public string StatusName { get; set; }
+        public long CountVal { get; set; }
+    }
+    public class DocManagerCOs
+    {
+        public string StatusName { get; set; }
+        public long CountVal { get; set; }
+    }
+    public class ActiveDocumentPerProjectChart
+    {
+        public string RecordName { get; set; }
+        public long CountVal { get; set; }
+    }
+    public class DelayedDocumentPerProjectChart
+    {
+        public string RecordName { get; set; }
+        public long CountVal { get; set; }
+    }
+    public class PunchListChart
+    {
+        public string ToCoName { get; set; }
+        public long? Draft { get; set; }
+        public long? Submitted { get; set; }
+        public long? Returned { get; set; }
+        public long? Resubmitted { get; set; }
+        public long? Approved { get; set; }
+        public long? Rejected { get; set; }
+        public long? Withdrawn { get; set; }
+        public long? TotalOutStanding { get; set; }
+        public long? TotalOverDue { get; set; }
+    }
+
+
     public class GoogleMapAddress
     {
         public long projectid { get; set; }
+        public string ProjectNumber { get; set; }
+        public string ProjectName { get; set; }
         public string GoogleAddress { get; set; }
+        public string latitude { get; set; }
+        public string longitude { get; set; }
+        public long? OUTSTANDING_DOCUMENT { get; set; }
+        public long? OVERDUE_DOCUMENT { get; set; }
+        public DateTime? FinishDate { get; set; }
+        public DateTime? BaselineFinishDate { get; set; }
+        public decimal ForecastsVariance { get; set; }
     }
     public class PortifolioSummryOne
     {
@@ -47,6 +154,9 @@ namespace DataModel
         public DateTime? BaselineStartDate { get; set; }
         public DateTime? BaselineFinishDate { get; set; }
         public long? Days { get; set; }
+        public long? OUTSTANDING_DOCUMENT { get; set; }
+        public long? OVERDUE_DOCUMENT { get; set; }
+
 
     }
 
@@ -63,6 +173,7 @@ namespace DataModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
+        public IList<PortifolioSummryOne> ProjectList { get; set; }
     }
 
 

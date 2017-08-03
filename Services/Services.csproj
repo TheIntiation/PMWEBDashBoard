@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -26,7 +25,6 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,29 +47,26 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>ref\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="GoogleMaps.LocationServices, Version=0.1.6329.16944, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMaps.LocationServices.1.2.0.1\lib\net40\GoogleMaps.LocationServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Web.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.2\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -79,45 +74,43 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Web.Http.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.2\lib\net45\System.Web.Http.Cors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -135,7 +128,6 @@
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -146,7 +138,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\DocManagementController.cs" />
     <Compile Include="Controllers\UserManagementController.cs" />
     <Compile Include="Controllers\WorkFlowController.cs" />
     <Compile Include="Controllers\WorkflowKPIController.cs" />
@@ -164,430 +155,21 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Properties\PublishProfiles\File.pubxml" />
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="README_FIRST.txt" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="GoogleMaps.LocationServices.readme.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <None Include="Properties\PublishProfiles\File.pubxml" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
-    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
-    <Content Include="UltimateMobile1\config.xml" />
-    <Content Include="UltimateMobile1\www\css\framework7-icons.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.ios.colors.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.ios.colors.min.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.ios.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.ios.min.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.ios.rtl.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.ios.rtl.min.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.material.colors.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.material.colors.min.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.material.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.material.min.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.material.rtl.css" />
-    <Content Include="UltimateMobile1\www\css\framework7.material.rtl.min.css" />
-    <Content Include="UltimateMobile1\www\css\index.css" />
-    <Content Include="UltimateMobile1\www\css\my-app.css" />
-    <Content Include="UltimateMobile1\www\css\style.css" />
-    <Content Include="UltimateMobile1\www\dashboard.html" />
-    <Content Include="UltimateMobile1\www\helpdesk.html" />
-    <Content Include="UltimateMobile1\www\Home.html" />
-    <Content Include="UltimateMobile1\www\img\add.svg" />
-    <Content Include="UltimateMobile1\www\img\add_round.svg" />
-    <Content Include="UltimateMobile1\www\img\add_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\alarm.svg" />
-    <Content Include="UltimateMobile1\www\img\alarm_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\albums.svg" />
-    <Content Include="UltimateMobile1\www\img\albums_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\arrow_down.svg" />
-    <Content Include="UltimateMobile1\www\img\arrow_down_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\arrow_left.svg" />
-    <Content Include="UltimateMobile1\www\img\arrow_left_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\arrow_right.svg" />
-    <Content Include="UltimateMobile1\www\img\arrow_right_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\arrow_up.svg" />
-    <Content Include="UltimateMobile1\www\img\arrow_up_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\at.svg" />
-    <Content Include="UltimateMobile1\www\img\at_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\bag.svg" />
-    <Content Include="UltimateMobile1\www\img\bag_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\bars.svg" />
-    <Content Include="UltimateMobile1\www\img\bell.svg" />
-    <Content Include="UltimateMobile1\www\img\bell_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\bolt.svg" />
-    <Content Include="UltimateMobile1\www\img\bolt_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\bolt_round.svg" />
-    <Content Include="UltimateMobile1\www\img\bolt_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\book.svg" />
-    <Content Include="UltimateMobile1\www\img\bookmark.svg" />
-    <Content Include="UltimateMobile1\www\img\bookmark_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\book_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\box.svg" />
-    <Content Include="UltimateMobile1\www\img\box_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\briefcase.svg" />
-    <Content Include="UltimateMobile1\www\img\briefcase_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\calendar.svg" />
-    <Content Include="UltimateMobile1\www\img\calendar_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\camera.svg" />
-    <Content Include="UltimateMobile1\www\img\camera_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\card.svg" />
-    <Content Include="UltimateMobile1\www\img\card_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\chat.svg" />
-    <Content Include="UltimateMobile1\www\img\chats.svg" />
-    <Content Include="UltimateMobile1\www\img\chats_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\chat_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\check.svg" />
-    <Content Include="UltimateMobile1\www\img\check_round.svg" />
-    <Content Include="UltimateMobile1\www\img\check_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\chevron_down.svg" />
-    <Content Include="UltimateMobile1\www\img\chevron_left.svg" />
-    <Content Include="UltimateMobile1\www\img\chevron_right.svg" />
-    <Content Include="UltimateMobile1\www\img\chevron_up.svg" />
-    <Content Include="UltimateMobile1\www\img\circle.svg" />
-    <Content Include="UltimateMobile1\www\img\circle_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\circle_half.svg" />
-    <Content Include="UltimateMobile1\www\img\close.svg" />
-    <Content Include="UltimateMobile1\www\img\close_round.svg" />
-    <Content Include="UltimateMobile1\www\img\close_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\cloud.svg" />
-    <Content Include="UltimateMobile1\www\img\cloud_download.svg" />
-    <Content Include="UltimateMobile1\www\img\cloud_download_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\cloud_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\cloud_upload.svg" />
-    <Content Include="UltimateMobile1\www\img\cloud_upload_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\collection.svg" />
-    <Content Include="UltimateMobile1\www\img\collection_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\compass.svg" />
-    <Content Include="UltimateMobile1\www\img\compass_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\compose.svg" />
-    <Content Include="UltimateMobile1\www\img\compose_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\data.svg" />
-    <Content Include="UltimateMobile1\www\img\data_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\delete.svg" />
-    <Content Include="UltimateMobile1\www\img\delete_round.svg" />
-    <Content Include="UltimateMobile1\www\img\delete_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\document.svg" />
-    <Content Include="UltimateMobile1\www\img\document_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\document_text.svg" />
-    <Content Include="UltimateMobile1\www\img\document_text_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\down.svg" />
-    <Content Include="UltimateMobile1\www\img\download.svg" />
-    <Content Include="UltimateMobile1\www\img\download_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\download_round.svg" />
-    <Content Include="UltimateMobile1\www\img\download_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\drawer.svg" />
-    <Content Include="UltimateMobile1\www\img\drawers.svg" />
-    <Content Include="UltimateMobile1\www\img\drawers_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\drawer_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\email.svg" />
-    <Content Include="UltimateMobile1\www\img\email_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\eye.svg" />
-    <Content Include="UltimateMobile1\www\img\eye_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\fastforward.svg" />
-    <Content Include="UltimateMobile1\www\img\fastforward_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\fastforward_round.svg" />
-    <Content Include="UltimateMobile1\www\img\fastforward_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\favorites.svg" />
-    <Content Include="UltimateMobile1\www\img\favorites_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\film.svg" />
-    <Content Include="UltimateMobile1\www\img\film_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\filter-fill.svg" />
-    <Content Include="UltimateMobile1\www\img\filter.svg" />
-    <Content Include="UltimateMobile1\www\img\flag.svg" />
-    <Content Include="UltimateMobile1\www\img\flag_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\folder.svg" />
-    <Content Include="UltimateMobile1\www\img\folder_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\forward.svg" />
-    <Content Include="UltimateMobile1\www\img\forward_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\gear.svg" />
-    <Content Include="UltimateMobile1\www\img\gear_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\graph_round.svg" />
-    <Content Include="UltimateMobile1\www\img\graph_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\graph_square.svg" />
-    <Content Include="UltimateMobile1\www\img\graph_square_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\heart.svg" />
-    <Content Include="UltimateMobile1\www\img\heart_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\help.svg" />
-    <Content Include="UltimateMobile1\www\img\help_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\HMC_big.jpg" />
-    <Content Include="UltimateMobile1\www\img\home.svg" />
-    <Content Include="UltimateMobile1\www\img\home_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\i-f7-ios.png" />
-    <Content Include="UltimateMobile1\www\img\i-f7-material.png" />
-    <Content Include="UltimateMobile1\www\img\images.svg" />
-    <Content Include="UltimateMobile1\www\img\images_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\info.svg" />
-    <Content Include="UltimateMobile1\www\img\info_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\keyboard.svg" />
-    <Content Include="UltimateMobile1\www\img\keyboard_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\layers.svg" />
-    <Content Include="UltimateMobile1\www\img\layers_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\left.svg" />
-    <Content Include="UltimateMobile1\www\img\list.svg" />
-    <Content Include="UltimateMobile1\www\img\list_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\lock.svg" />
-    <Content Include="UltimateMobile1\www\img\lock_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\login.svg" />
-    <Content Include="UltimateMobile1\www\img\login_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\logo.png" />
-    <Content Include="UltimateMobile1\www\img\logout.svg" />
-    <Content Include="UltimateMobile1\www\img\logout_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\mbg.png" />
-    <Content Include="UltimateMobile1\www\img\menu.svg" />
-    <Content Include="UltimateMobile1\www\img\mic.svg" />
-    <Content Include="UltimateMobile1\www\img\mic_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\money_dollar.svg" />
-    <Content Include="UltimateMobile1\www\img\money_dollar_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\money_euro.svg" />
-    <Content Include="UltimateMobile1\www\img\money_euro_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\money_pound.svg" />
-    <Content Include="UltimateMobile1\www\img\money_pound_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\money_rubl.svg" />
-    <Content Include="UltimateMobile1\www\img\money_rubl_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\money_yen.svg" />
-    <Content Include="UltimateMobile1\www\img\money_yen_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\more.svg" />
-    <Content Include="UltimateMobile1\www\img\more_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\more_round.svg" />
-    <Content Include="UltimateMobile1\www\img\more_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\more_vertical.svg" />
-    <Content Include="UltimateMobile1\www\img\more_vertical_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\more_vertical_round.svg" />
-    <Content Include="UltimateMobile1\www\img\more_vertical_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\navigation.svg" />
-    <Content Include="UltimateMobile1\www\img\navigation_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\paper_plane.svg" />
-    <Content Include="UltimateMobile1\www\img\paper_plane_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\pause.svg" />
-    <Content Include="UltimateMobile1\www\img\pause_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\pause_round.svg" />
-    <Content Include="UltimateMobile1\www\img\pause_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\person.svg" />
-    <Content Include="UltimateMobile1\www\img\persons.svg" />
-    <Content Include="UltimateMobile1\www\img\persons_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\person_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\phone.svg" />
-    <Content Include="UltimateMobile1\www\img\phone_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\phone_round.svg" />
-    <Content Include="UltimateMobile1\www\img\phone_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\photos.svg" />
-    <Content Include="UltimateMobile1\www\img\photos_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\pie.svg" />
-    <Content Include="UltimateMobile1\www\img\pie_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\play.svg" />
-    <Content Include="UltimateMobile1\www\img\play_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\play_round.svg" />
-    <Content Include="UltimateMobile1\www\img\play_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\radio.svg" />
-    <Content Include="UltimateMobile1\www\img\redo.svg" />
-    <Content Include="UltimateMobile1\www\img\refresh.svg" />
-    <Content Include="UltimateMobile1\www\img\refresh_round.svg" />
-    <Content Include="UltimateMobile1\www\img\refresh_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\reload.svg" />
-    <Content Include="UltimateMobile1\www\img\reload_round.svg" />
-    <Content Include="UltimateMobile1\www\img\reload_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\reply.svg" />
-    <Content Include="UltimateMobile1\www\img\reply_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\rewind.svg" />
-    <Content Include="UltimateMobile1\www\img\rewind_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\rewind_round.svg" />
-    <Content Include="UltimateMobile1\www\img\rewind_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\right.svg" />
-    <Content Include="UltimateMobile1\www\img\search.svg" />
-    <Content Include="UltimateMobile1\www\img\search_strong.svg" />
-    <Content Include="UltimateMobile1\www\img\settings.svg" />
-    <Content Include="UltimateMobile1\www\img\settings_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\share.svg" />
-    <Content Include="UltimateMobile1\www\img\share_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\social_facebook.svg" />
-    <Content Include="UltimateMobile1\www\img\social_facebook_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\social_github.svg" />
-    <Content Include="UltimateMobile1\www\img\social_github_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\social_googleplus.svg" />
-    <Content Include="UltimateMobile1\www\img\social_instagram.svg" />
-    <Content Include="UltimateMobile1\www\img\social_instagram_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\social_linkedin.svg" />
-    <Content Include="UltimateMobile1\www\img\social_linkedin_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\social_rss.svg" />
-    <Content Include="UltimateMobile1\www\img\social_rss_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\social_twitter.svg" />
-    <Content Include="UltimateMobile1\www\img\social_twitter_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\sort.svg" />
-    <Content Include="UltimateMobile1\www\img\sort_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\star.svg" />
-    <Content Include="UltimateMobile1\www\img\star_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\star_half.svg" />
-    <Content Include="UltimateMobile1\www\img\stopwatch.svg" />
-    <Content Include="UltimateMobile1\www\img\stopwatch_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\tabs.svg" />
-    <Content Include="UltimateMobile1\www\img\tabs_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\tags.svg" />
-    <Content Include="UltimateMobile1\www\img\tags_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\tape.svg" />
-    <Content Include="UltimateMobile1\www\img\tape_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\ticket.svg" />
-    <Content Include="UltimateMobile1\www\img\ticket_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\time.svg" />
-    <Content Include="UltimateMobile1\www\img\timer.svg" />
-    <Content Include="UltimateMobile1\www\img\timer_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\time_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\today.svg" />
-    <Content Include="UltimateMobile1\www\img\today_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\trash.svg" />
-    <Content Include="UltimateMobile1\www\img\trash_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\tune.svg" />
-    <Content Include="UltimateMobile1\www\img\tune_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\ultimate.jpg" />
-    <Content Include="UltimateMobile1\www\img\undo.svg" />
-    <Content Include="UltimateMobile1\www\img\unlock.svg" />
-    <Content Include="UltimateMobile1\www\img\unlock_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\up.svg" />
-    <Content Include="UltimateMobile1\www\img\videocam.svg" />
-    <Content Include="UltimateMobile1\www\img\videocam_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\videocam_round.svg" />
-    <Content Include="UltimateMobile1\www\img\videocam_round_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\volume.svg" />
-    <Content Include="UltimateMobile1\www\img\volume_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\volume_low.svg" />
-    <Content Include="UltimateMobile1\www\img\volume_low_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\volume_mute.svg" />
-    <Content Include="UltimateMobile1\www\img\volume_mute_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\world.svg" />
-    <Content Include="UltimateMobile1\www\img\world_fill.svg" />
-    <Content Include="UltimateMobile1\www\img\zoom_in.svg" />
-    <Content Include="UltimateMobile1\www\img\zoom_out.svg" />
-    <Content Include="UltimateMobile1\www\index.html" />
-    <Content Include="UltimateMobile1\www\js\Common.js" />
-    <Content Include="UltimateMobile1\www\js\DashboardUI.js" />
-    <Content Include="UltimateMobile1\www\js\export-data.js" />
-    <Content Include="UltimateMobile1\www\js\framework7.js" />
-    <Content Include="UltimateMobile1\www\js\framework7.min.js" />
-    <Content Include="UltimateMobile1\www\js\Getting.js" />
-    <Content Include="UltimateMobile1\www\js\highcharts-3d.js" />
-    <Content Include="UltimateMobile1\www\js\highcharts-3d.src.js" />
-    <Content Include="UltimateMobile1\www\js\highcharts-more.js" />
-    <Content Include="UltimateMobile1\www\js\highcharts.js" />
-    <Content Include="UltimateMobile1\www\js\highcharts.src.js" />
-    <Content Include="UltimateMobile1\www\js\index.js" />
-    <Content Include="UltimateMobile1\www\js\jquery.min.js" />
-    <Content Include="UltimateMobile1\www\js\JSUI_Dashboard.js" />
-    <Content Include="UltimateMobile1\www\js\knockout-3.1.0.debug.js" />
-    <Content Include="UltimateMobile1\www\js\knockout-3.1.0.js" />
-    <Content Include="UltimateMobile1\www\js\knockout.validation.js" />
-    <Content Include="UltimateMobile1\www\js\Loclization.js" />
-    <Content Include="UltimateMobile1\www\js\my-app.js" />
-    <Content Include="UltimateMobile1\www\js\Posting.js" />
-    <Content Include="UltimateMobile1\www\js\ServicesUI.js" />
-    <Content Include="UltimateMobile1\www\js\Vlaidation - Copy.js" />
-    <Content Include="UltimateMobile1\www\js\Vlaidation.js" />
-    <Content Include="UltimateMobile1\www\login.html" />
-    <Content Include="UltimateMobile1\www\logos\bg.jpg" />
-    <Content Include="UltimateMobile1\www\logos\bg1.jpg" />
-    <Content Include="UltimateMobile1\www\logos\bg3.jpg" />
-    <Content Include="UltimateMobile1\www\logos\bg4.jpg" />
-    <Content Include="UltimateMobile1\www\logos\HMC.png" />
-    <Content Include="UltimateMobile1\www\logos\kbg.jpg" />
-    <Content Include="UltimateMobile1\www\logos\kpibg.jpg" />
-    <Content Include="UltimateMobile1\www\logos\llogo.png" />
-    <Content Include="UltimateMobile1\www\logos\loggo.png" />
-    <Content Include="UltimateMobile1\www\logos\mbg.png" />
-    <Content Include="UltimateMobile1\www\logos\pemweb.png" />
-    <Content Include="UltimateMobile1\www\logos\pm.gif" />
-    <Content Include="UltimateMobile1\www\logos\proj.gif" />
-    <Content Include="UltimateMobile1\www\logos\usp.jpg" />
-    <Content Include="UltimateMobile1\www\logos\uspmc.gif" />
-    <Content Include="UltimateMobile1\www\logos\workflowdetail.jpg" />
-    <Content Include="UltimateMobile1\www\main.html" />
-    <Content Include="UltimateMobile1\www\res\icon\android\drawable-hdpi-icon.png" />
-    <Content Include="UltimateMobile1\www\res\icon\android\drawable-ldpi-icon.png" />
-    <Content Include="UltimateMobile1\www\res\icon\android\drawable-mdpi-icon.png" />
-    <Content Include="UltimateMobile1\www\res\icon\android\drawable-xhdpi-icon.png" />
-    <Content Include="UltimateMobile1\www\res\icon\android\drawable-xxhdpi-icon.png" />
-    <Content Include="UltimateMobile1\www\res\icon\android\drawable-xxxhdpi-icon.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon%402x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-40%402x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-40.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-50%402x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-50.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-60%402x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-60%403x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-60.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-72%402x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-72.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-76%402x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-76.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-small%402x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-small%403x.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon-small.png" />
-    <Content Include="UltimateMobile1\www\res\icon\ios\icon.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square150x150Logo.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square150x150Logo.scale-240.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square30x30Logo.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square310x310Logo.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square44x44Logo.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square44x44Logo.scale-240.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square70x70Logo.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square71x71Logo.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Square71x71Logo.scale-240.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\StoreLogo.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\StoreLogo.scale-240.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Wide310x150Logo.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\icon\windows\Wide310x150Logo.scale-240.png" />
-    <Content Include="UltimateMobile1\www\res\icon\wp8\ApplicationIcon.png" />
-    <Content Include="UltimateMobile1\www\res\icon\wp8\Background.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-land-hdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-land-ldpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-land-mdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-land-xhdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-land-xxhdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-land-xxxhdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-port-hdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-port-ldpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-port-mdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-port-xhdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-port-xxhdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\android\drawable-port-xxxhdpi-screen.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default%402x~iphone.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default-568h%402x~iphone.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default-667h.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default-736h.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default-Landscape%402x~ipad.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default-Landscape-736h.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default-Landscape~ipad.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default-Portrait%402x~ipad.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default-Portrait~ipad.png" />
-    <Content Include="UltimateMobile1\www\res\screen\ios\Default~iphone.png" />
-    <Content Include="UltimateMobile1\www\res\screen\windows\SplashScreen.scale-100.png" />
-    <Content Include="UltimateMobile1\www\res\screen\windows\SplashScreenPhone.scale-240.png" />
-    <Content Include="UltimateMobile1\www\res\screen\wp8\screen-portrait.jpg" />
-    <Content Include="UltimateMobile1\www\Setting.html" />
-    <Content Include="UltimateMobile1\www\spec.html" />
-    <Content Include="UltimateMobile1\www\spec\helper.js" />
-    <Content Include="UltimateMobile1\www\spec\index.js" />
-    <Content Include="UltimateMobile1\www\spec\lib\jasmine-1.2.0\jasmine-html.js" />
-    <Content Include="UltimateMobile1\www\spec\lib\jasmine-1.2.0\jasmine.css" />
-    <Content Include="UltimateMobile1\www\spec\lib\jasmine-1.2.0\jasmine.js" />
-    <Content Include="UltimateMobile1\www\workflowDetails.html" />
-    <Content Include="UltimateMobile1\www\WorkflowKPI.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -601,20 +183,6 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\QKAA.pubxml" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="UltimateMobile1\.bithoundrc" />
-    <Content Include="UltimateMobile1\CONTRIBUTING.md" />
-    <Content Include="UltimateMobile1\hooks\README.md" />
-    <Content Include="UltimateMobile1\README.md" />
-    <Content Include="UltimateMobile1\www\fonts\Framework7Icons-Regular.eot" />
-    <Content Include="UltimateMobile1\www\fonts\Framework7Icons-Regular.ttf" />
-    <Content Include="UltimateMobile1\www\fonts\Framework7Icons-Regular.woff" />
-    <Content Include="UltimateMobile1\www\fonts\Framework7Icons-Regular.woff2" />
-    <Content Include="UltimateMobile1\www\js\framework7.js.map" />
-    <Content Include="UltimateMobile1\www\js\framework7.min.js.map" />
-    <Content Include="UltimateMobile1\www\res\.pgbomit" />
-    <Content Include="UltimateMobile1\www\spec\lib\jasmine-1.2.0\MIT.LICENSE" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -632,15 +200,11 @@
       <Name>DataModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

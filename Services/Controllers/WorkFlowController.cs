@@ -12,6 +12,129 @@ namespace Services.Controllers
     [EnableCors("*", "*", "*")]
     public class WorkFlowController : ApiController
     {
+
+        [HttpGet]
+        [Route("api/WorkFlow/ScheduleSnap")]
+        public HttpResponseMessage ScheduleSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.getScheduleSnap(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetExeDashBoardPic")]
+        public HttpResponseMessage GetExeDashBoardPic(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetExeDashBoardPic(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetExeDashBoard")]
+        public HttpResponseMessage GetExeDashBoard(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetExeDashBoard(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+        [HttpGet]
+        [Route("api/WorkFlow/getStageGatesSnap")]
+        public HttpResponseMessage getStageGatesSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.getStageGatesSnap(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/getCostSnap")]
+        public HttpResponseMessage getCostSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.getCostSnap(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+        [HttpGet]
+        [Route("api/WorkFlow/getDocManagerCOs")]
+        public HttpResponseMessage getDocManagerCOs(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.getDocManagerCOs(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+        [HttpGet]
+        [Route("api/WorkFlow/getDocManagerRFI")]
+        public HttpResponseMessage getDocManagerRFI(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.getDocManagerRFI(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+
+        [HttpGet]
+        [Route("api/WorkFlow/getdelayeddocumentsperproject")]
+        public HttpResponseMessage getdelayeddocumentsperproject(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.getDelayedDocumentsChart(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/getactiveworkflowdocuments")]
+        public HttpResponseMessage getactiveworkflowdocuments(string projectid)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkflowKPI.getActiveWorkflowDocuments(projectid);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/getactivedocumentsperproject")]
+        public HttpResponseMessage getactivedocumentsperproject(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.getActiveDocumentsChart(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetPunchListChart")]
+        public HttpResponseMessage GetPunchListChart(long projectid)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetPunchListChart(projectid);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+
         [HttpGet]
         [Route("api/WorkFlow/GetPortifolioSummryDashbaord")]
         public HttpResponseMessage GetPortifolioSummryDashbaord(int programid)
@@ -112,42 +235,6 @@ namespace Services.Controllers
         {
             DataTransferModel returnValue = new DataTransferModel();
             returnValue = DAL.WorkFlow.finalApproveForWorkflow(obj.User,obj.DocId,obj.EntId,
-                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
-            return response;
-        }
-
-        [HttpPost]
-        [Route("api/WorkFlow/approveforworkflow")]
-        public HttpResponseMessage approveforworkflow(obj obj)
-        {
-            DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.approveForWorkflow(obj.User, obj.DocId, obj.EntId,
-                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
-            return response;
-        }
-
-
-
-        [HttpPost]
-        [Route("api/WorkFlow/rejectforworkflow")]
-        public HttpResponseMessage rejectforworkflow(obj obj)
-        {
-            DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.rejectForWorkflow(obj.User, obj.DocId, obj.EntId,
-                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
-            return response;
-        }
-
-
-        [HttpPost]
-        [Route("api/WorkFlow/returnforworkflow")]
-        public HttpResponseMessage returnforworkflow(obj obj)
-        {
-            DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.returnForWorkflow(obj.User, obj.DocId, obj.EntId,
                 obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
