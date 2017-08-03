@@ -120,4 +120,18 @@ namespace DataModel
         public float InvoicedPercentage { get; set; }
         public string CommitmentType { get; set; }
     }
+
+    public class ScheduleSnap
+    {
+        //Start Finish  BFinish Bstart  Cost ActualCost  
+        //    StatusDate DurationPast    PastPercentage DurationRemaining   RemainingPercentage
+        public DateTime Start { get; set; }
+        public DateTime Finish { get; set; }
+        public DateTime StatusDate { get; set; }
+        public long DurationPast { get; set; }
+        public float PastPercentage { get; set; }
+        public long DurationRemaining { get; set; }
+        public float RemainingPercentage { get; set; }
+
+    }
 }

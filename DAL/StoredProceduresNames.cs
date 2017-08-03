@@ -38,7 +38,8 @@ namespace DAL
         public static string getDocManager_COChart = "[dbo].[uspmc_document_management_dashboard_changeeventCharts]";
         public static string getStageGatesSnap = "[dbo].[uspmc_stageGatesSnap]";
         public static string getCostSnap = "[dbo].[uspmc_CostSnap]";
-        //test changes
+        public static string getScheduleSnap = "[dbo].[uspmc_ScheduleSnap]";
+        //uspmc_ScheduleSnap
 
 
 

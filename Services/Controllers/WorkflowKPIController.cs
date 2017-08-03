@@ -103,6 +103,16 @@ namespace Services.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
+
+        [HttpGet]
+        [Route("api/WorkFlowKPI/getScheduleSnap")]
+        public HttpResponseMessage getScheduleSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkflowKPI.getScheduleSnap(projectId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
     }
 }
 

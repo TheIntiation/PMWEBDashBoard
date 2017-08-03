@@ -477,5 +477,58 @@ namespace DAL
             return returnValue;
 
         }
+
+        public static DataTransferModel getScheduleSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<ScheduleSnap> myList = new List<ScheduleSnap>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.getScheduleSnap;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Project", projectId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new ScheduleSnap()
+                        {
+
+                            Start = (DateTime)reader.GetDataReaderDateTime("Start"),
+                            Finish = (DateTime)reader.GetDataReaderDateTime("Finish"),
+                            StatusDate = (DateTime)reader.GetDataReaderDateTime("StatusDate"),                          
+                            DurationPast = long.Parse(reader["DurationPast"].ToString()),
+                            PastPercentage = float.Parse(reader["PastPercentage"].ToString()),
+                            DurationRemaining = long.Parse(reader["DurationRemaining"].ToString()),
+                            RemainingPercentage = float.Parse(reader["RemainingPercentage"].ToString()),
+
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
     }
 }
