@@ -116,6 +116,42 @@ namespace Services.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
+
+        [HttpPost]
+        [Route("api/WorkFlow/approveforworkflow")]
+        public HttpResponseMessage approveforworkflow(obj obj)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.approveForWorkflow(obj.User, obj.DocId, obj.EntId,
+                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+
+        [HttpPost]
+        [Route("api/WorkFlow/rejectforworkflow")]
+        public HttpResponseMessage rejectforworkflow(obj obj)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.rejectForWorkflow(obj.User, obj.DocId, obj.EntId,
+                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+        [HttpPost]
+        [Route("api/WorkFlow/returnforworkflow")]
+        public HttpResponseMessage returnforworkflow(obj obj)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.returnForWorkflow(obj.User, obj.DocId, obj.EntId,
+                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
         [HttpGet]
         [Route("api/WorkFlow/getworkflowdetailsbymodule")]
         public HttpResponseMessage GetWorkflowDetailByModuleAndUser(string username, int moduleId)

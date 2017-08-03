@@ -23,10 +23,26 @@ namespace DAL
         //@User bigint,@DocId bigint, @EntId bigint,@RecId bigint, @RecTypeId bigint,@ObjTypeId bigint, @ProjectId bigint,
         //@Comment nvarchar(max)
         public static string finalApproveForWorkflow = "[dbo].USPMC_FinalApproveWorkflowDocument";
+        public static string approveForWorkflow = "[dbo].USPMC_ApproveWorkflowDocument";
+        public static string rejectForWorkflow = "[dbo].USPMC_RejectWorkflowdocument";
+        public static string returnForWorkflow = "[dbo].USPMC_ReturnWorkflowDocument";
         public static string GetALLUserProjects = "[dbo].GetALLUserProjects";
         public static string uspmc_rpt_GetPunchLists = "[dbo].uspmc_rpt_GetPunchLists";
         public static string GetProgramsList = "[dbo].GetProgramsList";
-        public static string uspmc_portifolio_summry_dashbaord_level_two = "[dbo].uspmc_portifolio_summry_dashbaord_level_two";
+        public static string uspmc_portifolio_summry_dashbaord_level_two = "[dbo].uspmc_portifolio_summry_dashbaord_level_two";      
+        public static string getDocManagementRFIs = "[dbo].USPMC_DocManager_RFIs";
+        public static string gettestcharts = "[dbo].[uspmc_test_charts]";
+        public static string getActiveDocumentsChart = "[dbo].[USPMC_APIWorkflow_ActiveDocumnets]";
+        public static string getDelayedDocumentsChart = "[dbo].[USPMC_APIWorkflow_DelayedDocumnets]";
+        public static string getDocManager_RFIAPI = "[dbo].[uspmc_DocManager_RFIAPI]";
+        public static string getDocManager_COChart = "[dbo].[uspmc_document_management_dashboard_changeeventCharts]";
+        public static string getStageGatesSnap = "[dbo].[uspmc_stageGatesSnap]";
+        public static string getCostSnap = "[dbo].[uspmc_CostSnap]";
+        public static string getScheduleSnap = "[dbo].[uspmc_ScheduleSnap]";
+        //uspmc_ScheduleSnap
+
+
+
 
 
     }

@@ -1,5 +1,4 @@
 ﻿using DataModel;
-using GoogleMaps.LocationServices;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,9 +58,6 @@ namespace DAL
                     }
                     else if (programid == -1)
                     {
-                        var locationService = new GoogleLocationService();
-                        
-
                         while (reader.Read())
                         {
                             myList3.Add(new GoogleMapAddress()
@@ -69,9 +65,7 @@ namespace DAL
 
                                 projectid = (long)reader["projectid"],
                                 GoogleAddress = reader.GetDataReaderString("GoogleAddress"),
-                                latitude = Getlatitude(reader.GetDataReaderString("GoogleAddress")),
-                                longitude = Getlongitude(reader.GetDataReaderString("GoogleAddress")),
-                                
+
                             });
                         }
                         returnValue.IsSucess = true;
@@ -138,24 +132,6 @@ namespace DAL
 
             return returnValue;
 
-        }
-
-        private static double Getlatitude(string v)
-        {
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(v);
-
-            double latitude = point.Latitude;
-            return latitude;
-        }
-
-        private static double Getlongitude(string v)
-        {
-            var locationService = new GoogleLocationService();
-            var point = locationService.GetLatLongFromAddress(v);
-
-            double longitude = point.Longitude;
-            return longitude;
         }
 
         public static DataTransferModel GetProgramsList(int UserId)
@@ -582,8 +558,7 @@ namespace DAL
             return returnValue;
 
         }
-        public static DataTransferModel finalApproveForWorkflow(
- 
+      public static DataTransferModel finalApproveForWorkflow(
             Int64 User, Int64 DocId,Int64 EntId, Int64 RecId, Int64 RecTypeId,Int64 ObjTypeId,
             Int64 ProjectId,string Comment)
         {
@@ -637,6 +612,169 @@ namespace DAL
             return returnValue;
         }
 
+        public static DataTransferModel approveForWorkflow(
+           Int64 User, Int64 DocId, Int64 EntId, Int64 RecId, Int64 RecTypeId, Int64 ObjTypeId,
+           Int64 ProjectId, string Comment)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.approveForWorkflow;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+
+                    // Command Parameters
+                    sqlCommand.Parameters.AddWithValue("@User", User);
+                    sqlCommand.Parameters.AddWithValue("@DocId", DocId);
+                    sqlCommand.Parameters.AddWithValue("@EntId", EntId);
+                    sqlCommand.Parameters.AddWithValue("@RecId", RecId);
+                    sqlCommand.Parameters.AddWithValue("@RecTypeId", RecTypeId);
+                    sqlCommand.Parameters.AddWithValue("@ObjTypeId", ObjTypeId);
+                    sqlCommand.Parameters.AddWithValue("@ProjectId", ProjectId);
+                    sqlCommand.Parameters.AddWithValue("@Comment", Comment);
+                    //Execute Command
+                    int returnVal = sqlCommand.ExecuteNonQuery();
+                    if (returnVal > 0)
+                    {
+                        returnValue.IsSucess = true;
+                        returnValue.Message = "Record was successfully approved";
+                        returnValue.DataValue = null;
+
+                    }
+                    else
+                    {
+                        returnValue.IsSucess = false;
+                        returnValue.Message = "An error happened while approving the document";
+                        returnValue.DataValue = null;
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.Message.ToString();
+                returnValue.DataValue = null;
+            }
+
+            return returnValue;
+        }
+
+
+        public static DataTransferModel rejectForWorkflow(
+          Int64 User, Int64 DocId, Int64 EntId, Int64 RecId, Int64 RecTypeId, Int64 ObjTypeId,
+          Int64 ProjectId, string Comment)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.rejectForWorkflow;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+
+                    // Command Parameters
+                    sqlCommand.Parameters.AddWithValue("@User", User);
+                    sqlCommand.Parameters.AddWithValue("@DocId", DocId);
+                    sqlCommand.Parameters.AddWithValue("@EntId", EntId);
+                    sqlCommand.Parameters.AddWithValue("@RecId", RecId);
+                    sqlCommand.Parameters.AddWithValue("@RecTypeId", RecTypeId);
+                    sqlCommand.Parameters.AddWithValue("@ObjTypeId", ObjTypeId);
+                    sqlCommand.Parameters.AddWithValue("@ProjectId", ProjectId);
+                    sqlCommand.Parameters.AddWithValue("@Comment", Comment);
+                    //Execute Command
+                    int returnVal = sqlCommand.ExecuteNonQuery();
+                    if (returnVal > 0)
+                    {
+                        returnValue.IsSucess = true;
+                        returnValue.Message = "Record was successfully rejected";
+                        returnValue.DataValue = null;
+
+                    }
+                    else
+                    {
+                        returnValue.IsSucess = false;
+                        returnValue.Message = "An error happened while rejecting the document";
+                        returnValue.DataValue = null;
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.Message.ToString();
+                returnValue.DataValue = null;
+            }
+
+            return returnValue;
+        }
+
+
+        public static DataTransferModel returnForWorkflow(
+  Int64 User, Int64 DocId, Int64 EntId, Int64 RecId, Int64 RecTypeId, Int64 ObjTypeId,
+  Int64 ProjectId, string Comment)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.returnForWorkflow;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+
+                    // Command Parameters
+                    sqlCommand.Parameters.AddWithValue("@User", User);
+                    sqlCommand.Parameters.AddWithValue("@DocId", DocId);
+                    sqlCommand.Parameters.AddWithValue("@EntId", EntId);
+                    sqlCommand.Parameters.AddWithValue("@RecId", RecId);
+                    sqlCommand.Parameters.AddWithValue("@RecTypeId", RecTypeId);
+                    sqlCommand.Parameters.AddWithValue("@ObjTypeId", ObjTypeId);
+                    sqlCommand.Parameters.AddWithValue("@ProjectId", ProjectId);
+                    sqlCommand.Parameters.AddWithValue("@Comment", Comment);
+                    //Execute Command
+                    int returnVal = sqlCommand.ExecuteNonQuery();
+                    if (returnVal > 0)
+                    {
+                        returnValue.IsSucess = true;
+                        returnValue.Message = "Record was successfully returned";
+                        returnValue.DataValue = null;
+
+                    }
+                    else
+                    {
+                        returnValue.IsSucess = false;
+                        returnValue.Message = "An error happened while returning the document";
+                        returnValue.DataValue = null;
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.Message.ToString();
+                returnValue.DataValue = null;
+            }
+
+            return returnValue;
+        }
 
     }
 }

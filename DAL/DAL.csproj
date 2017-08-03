@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Configurations.cs" />
     <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="DocManagementKPI.cs" />
     <Compile Include="StoredProceduresNames.cs" />
     <Compile Include="UserManagement.cs" />
     <Compile Include="WorkFlow.cs" />

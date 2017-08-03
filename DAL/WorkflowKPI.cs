@@ -133,5 +133,402 @@ namespace DAL
             return returnValue;
 
         }
+
+        public static DataTransferModel gettestcharts()
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<ChartDetail> myList = new List<ChartDetail>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.gettestcharts;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+
+                    
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new ChartDetail()
+                        {
+                            RecordName = reader.GetDataReaderString("RecordName"),
+                            CountVal = long.Parse( reader["CountVal"].ToString())
+                       
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
+        public static DataTransferModel getActiveDocumentsChart(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<ActiveDocumentPerProjectChart> myList = new List<ActiveDocumentPerProjectChart>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.getActiveDocumentsChart;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Project", projectId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new ActiveDocumentPerProjectChart()
+                        {
+                            RecordName = reader.GetDataReaderString("RecordName"),
+                            CountVal = long.Parse(reader["CountVal"].ToString())
+
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
+        public static DataTransferModel getDelayedDocumentsChart(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<DelayedDocumentPerProjectChart> myList = new List<DelayedDocumentPerProjectChart>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.getDelayedDocumentsChart;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Project", projectId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new DelayedDocumentPerProjectChart()
+                        {
+                            RecordName = reader.GetDataReaderString("RecordName"),
+                            CountVal = long.Parse(reader["CountVal"].ToString())
+
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
+        public static DataTransferModel getDocManagerRFI(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<DocManagerRFIs> myList = new List<DocManagerRFIs>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.getDocManagementRFIs;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Project", projectId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new DocManagerRFIs()
+                        {
+                            StatusName = reader.GetDataReaderString("StatusName"),
+                            CountVal = long.Parse(reader["CountVal"].ToString())
+
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
+        public static DataTransferModel getDocManagerCOs(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<DocManagerCOs> myList = new List<DocManagerCOs>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.getDocManager_COChart;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Project", projectId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new DocManagerCOs()
+                        {
+                            StatusName = reader.GetDataReaderString("StatusName"),
+                            CountVal = long.Parse(reader["CountVal"].ToString())
+
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
+        public static DataTransferModel getStageGatesSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<StageGatesSnap> myList = new List<StageGatesSnap>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.getStageGatesSnap;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Project", projectId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new StageGatesSnap()
+                        {
+                            GateId = long.Parse(reader["GateId"].ToString()),
+                            GateDescrption = reader.GetDataReaderString("GateDescrption"),
+                            CountActivitiesDone = long.Parse(reader["CountActivitiesDone"].ToString()),
+                            TotalActivities = long.Parse(reader["TotalActivities"].ToString()),
+                            Percentage = float.Parse(reader["Percentage"].ToString())
+
+
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
+        public static DataTransferModel getCostSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<CostSnap> myList = new List<CostSnap>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.getCostSnap;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Project", projectId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new CostSnap()
+                        {
+                            id = long.Parse(reader["id"].ToString()),
+                            ProjectName = reader.GetDataReaderString("ProjectName"),
+                            ProjectNumber = reader.GetDataReaderString("ProjectNumber"),
+                            CommitmentCode = reader.GetDataReaderString("CommitmentCode"),
+                            Description = reader.GetDataReaderString("Description"),
+                            CurrencyId = long.Parse(reader["CurrencyId"].ToString()),
+                            CurrencyCode = reader.GetDataReaderString("CurrencyCode"),
+                            OriginalCommitment = float.Parse(reader["OriginalCommitment"].ToString()),
+                            Invoiced = float.Parse(reader["Invoiced"].ToString()),
+                            ApprovedChanges = float.Parse(reader["ApprovedChanges"].ToString()),
+                            RevisedContrcatSum = float.Parse(reader["RevisedContrcatSum"].ToString()),
+                            InvoicedPercentage = float.Parse(reader["InvoicedPercentage"].ToString()),
+                            CommitmentType = reader.GetDataReaderString("CurrencyCode")
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
+        public static DataTransferModel getScheduleSnap(string projectId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<ScheduleSnap> myList = new List<ScheduleSnap>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.getScheduleSnap;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@Project", projectId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new ScheduleSnap()
+                        {
+
+                            Start = (DateTime)reader.GetDataReaderDateTime("Start"),
+                            Finish = (DateTime)reader.GetDataReaderDateTime("Finish"),
+                            StatusDate = (DateTime)reader.GetDataReaderDateTime("StatusDate"),                          
+                            DurationPast = long.Parse(reader["DurationPast"].ToString()),
+                            PastPercentage = float.Parse(reader["PastPercentage"].ToString()),
+                            DurationRemaining = long.Parse(reader["DurationRemaining"].ToString()),
+                            RemainingPercentage = float.Parse(reader["RemainingPercentage"].ToString()),
+
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
     }
 }

@@ -10,8 +10,6 @@ namespace DataModel
     {
         public long projectid { get; set; }
         public string GoogleAddress { get; set; }
-        public double latitude { get; set; }
-        public double longitude { get; set; }
     }
     public class PortifolioSummryOne
     {
