@@ -259,6 +259,46 @@ namespace Services.Controllers
             return response;
         }
 
+        [HttpGet]
+        [Route("api/WorkFlow/GetDocumentActionLogs")]
+        public HttpResponseMessage GetDocumentActionLogs(string DocumentId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetDocumentActionLogs(DocumentId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetDocumentStepsRoles")]
+        public HttpResponseMessage GetDocumentStepsRoles(string DocumentId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetDocumentStepsRoles(DocumentId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetCurrentStep")]
+        public HttpResponseMessage GetCurrentStep(string DocumentId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetCurrentStep(DocumentId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpPost]
+        [Route("api/WorkFlow/InsertHelpDesk")]
+        public HttpResponseMessage InsertHelpDesk(HelpDTO HelpDTO)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.InsertHelpDesk(HelpDTO);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
 
     }
 }

@@ -265,6 +265,78 @@ namespace DataModel
         public int TotalPendingItems { get; set; }
     }
 
+    public class DocumentStepsRoles
+    {
+        //RecordTypeId	RecordType	TotalPendingItems
+        public double Id { get; set; }
+        public long DocumentStepId { get; set; }
+        public long RoleId { get; set; }
+        public long SavedUserId { get; set; }
+        public string RoleName { get; set; }
+        public long SpecialRoleId { get; set; }
+        public string FullName { get; set; }
+        public string Delegates { get; set; }
+        public string TeamInput { get; set; }
+        public long SpecialRoleUserId { get; set; }
+        public string SpecialRoleUserName { get; set; }
 
+    }
+
+    public class CurrentStep
+    {
+        //RecordTypeId	RecordType	TotalPendingItems
+        public double StepId { get; set; }
+
+    }
+
+
+
+    public class DocumentActionLogs
+    {
+        public long ActionId { get; set; }
+        public long StepId { get; set; }
+        public long ParentId { get; set; }
+        public long StepNumber { get; set; }
+        public long StepSort { get; set; }
+        public long StepRoleId { get; set; }
+        public long RoleId { get; set; }
+        public long SpecialRoleId { get; set; }
+        public string RoleName { get; set; }
+        public long ActionTypeId { get; set; }
+        public long ActionBy { get; set; }
+        public string FullName { get; set; }
+        public DateTime? ActionDate { get; set; }
+        public DateTime? ActionDueDate { get; set; }
+        public string Comments { get; set; }
+        public string DocValue { get; set; }
+        public string IsBranch { get; set; }
+        public long BranchActionTypeId { get; set; }
+        public string BranchName { get; set; }
+        public string SignatureFileName { get; set; }
+        public string SignatureExtension { get; set; }
+        public Guid SignatureFileGuid { get; set; }
+        public Guid thumbnailGuid { get; set; }
+        public string FullFileName { get; set; }
+        public string ActionType { get; set; }
+        public string DelegateName { get; set; }
+        public string TeamInputNames { get; set; }
+        public long DeliveredToStepId { get; set; }
+        public string HasEmail { get; set; }
+        public string Generated { get; set; }
+        public string Instructions { get; set; }
+
+    }
+
+
+    public class HelpDTO
+    {
+        //RecordTypeId	RecordType	TotalPendingItems
+        public long UserID { get; set; }
+        public string Module { get; set; }
+        public string TypeOfIssue { get; set; }
+        public string Subject { get; set; }
+        public string Description { get; set; }
+
+    }
 
 }

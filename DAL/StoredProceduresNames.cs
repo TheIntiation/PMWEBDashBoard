@@ -39,6 +39,10 @@ namespace DAL
         public static string uspmc_exective_dashboard_cost = "[dbo].[uspmc_exective_dashboard_cost]";
         public static string uspmc_exective_dashboard_cost_pic = "[dbo].[uspmc_getProjectImagesById]";
         public static string getScheduleSnap = "[dbo].[uspmc_ScheduleSnap]";
+        public static string Workflow_GetDocumentActionLogs = "[dbo].[Workflow_GetDocumentActionLogs]";
+        public static string uspmc_Workflow_GetDocumentStepsRoles = "[dbo].[uspmc_Workflow_GetDocumentStepsRoles]";
+        public static string Workflow_CalculateCurrentPendingStepId = "[dbo].[uspmc_Workflow_CalculateCurrentPendingStepId]";
+        public static string uspmc_Insert_HelpDesk = "[dbo].[uspmc_Insert_HelpDesk]";
 
     }
 
