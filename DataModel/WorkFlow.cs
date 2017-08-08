@@ -289,8 +289,7 @@ namespace DataModel
 
     }
 
-
-
+    
     public class DocumentActionLogs
     {
         public long ActionId { get; set; }
