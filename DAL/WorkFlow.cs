@@ -962,7 +962,7 @@ namespace DAL
             return returnValue;
 
         }
-        public static DataTransferModel GetPendingWorkFlowByUserID(string UserID, long RecordTypeIdWeb)
+        public static DataTransferModel GetPendingWorkFlowByUserID(string UserID)
       {
           DataTransferModel returnValue = new DataTransferModel();
           IList<Workflow_GetInboxByUser> myList = new List<Workflow_GetInboxByUser>();
@@ -980,11 +980,10 @@ namespace DAL
                   // Open Connection
                   sqlConnection.Open();
 
-                    sqlCommand.Parameters.AddWithValue("@User", UserID);
-                    sqlCommand.Parameters.AddWithValue("@RecordTypeIdWeb", RecordTypeIdWeb);
+                  sqlCommand.Parameters.AddWithValue("@User", UserID);
 
-                    //Execute Command
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                  //Execute Command
+                  SqlDataReader reader = sqlCommand.ExecuteReader();
                   while (reader.Read())
                     {
                         myList.Add(new Workflow_GetInboxByUser()

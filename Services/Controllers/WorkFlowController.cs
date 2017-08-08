@@ -177,10 +177,10 @@ namespace Services.Controllers
 
         [HttpGet]
         [Route("api/WorkFlow/GetPendingWorkFlowByUserID")]
-        public HttpResponseMessage GetPendingWorkFlowByUserID(string UserID, long RecordTypeIdWeb)
+        public HttpResponseMessage GetPendingWorkFlowByUserID(string UserID)
         {
             DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.GetPendingWorkFlowByUserID(UserID, RecordTypeIdWeb);
+            returnValue = DAL.WorkFlow.GetPendingWorkFlowByUserID(UserID);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
