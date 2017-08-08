@@ -265,6 +265,13 @@ namespace DataModel
         public int TotalPendingItems { get; set; }
     }
 
+    public class NotificationEmail
+    {
+        public string Email { get; set; }
+        public int returnVal { get; set; }
+
+    }
+
 
 
 }
