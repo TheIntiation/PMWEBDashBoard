@@ -255,6 +255,8 @@ namespace DataModel
         public DateTime? DueDate { get; set; }
         public string RecordNumber { get; set; }
         public long projectId { get; set; }
+
+        public IList<DocumentStepsRoles> VisualWorkFlow { get; set; }
     }
 
     public class WorkflowDetailByModel
@@ -279,6 +281,9 @@ namespace DataModel
         public string TeamInput { get; set; }
         public long SpecialRoleUserId { get; set; }
         public string SpecialRoleUserName { get; set; }
+        public bool IsCurrentStep { get; set; }
+        public long CurrentStepNumber { get; set; }
+        public long TotalItems { get; set; }
 
     }
 

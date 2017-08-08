@@ -1271,7 +1271,8 @@ namespace DAL
                             CurrentStepNumber = (long)reader["CurrentStepNumber"],
                             DueDate=reader.GetDataReaderDateTime("DueDate"),
                             RecordNumber = reader.GetDataReaderString("RecordNumber"),
-                            projectId = (long)reader["projectId"]
+                            projectId = (long)reader["projectId"],
+                            VisualWorkFlow= GetDocumentStepsRoles(reader["DocumentId"].ToString(), reader["CurrentStepNumber"].ToString()),
                         });
                     }
                     returnValue.IsSucess = true;
@@ -1425,7 +1426,7 @@ namespace DAL
 
         }
 
-        public static DataTransferModel GetDocumentStepsRoles(string DocumentId)
+        public static IList<DocumentStepsRoles> GetDocumentStepsRoles(string DocumentId,string CurrentStepNumber)
         {
             DataTransferModel returnValue = new DataTransferModel();
             IList<DocumentStepsRoles> myList = new List<DocumentStepsRoles>();
@@ -1446,6 +1447,7 @@ namespace DAL
 
                     //Execute Command
                     SqlDataReader reader = sqlCommand.ExecuteReader();
+                    int counter = 0;
                     while (reader.Read())
                     {
                         myList.Add(new DocumentStepsRoles()
@@ -1462,6 +1464,9 @@ namespace DAL
                             TeamInput = reader["TeamInput"].ToString(),
                             SpecialRoleUserId = long.Parse(reader["SpecialRoleUserId"].ToString()),
                             SpecialRoleUserName = reader["SpecialRoleUserName"].ToString(),
+                            CurrentStepNumber = long.Parse(CurrentStepNumber),
+                            IsCurrentStep= GetIsCurrentStep(myList.Count, long.Parse(CurrentStepNumber)),
+                            TotalItems= 4,
                         });
                     }
                     returnValue.IsSucess = true;
@@ -1477,8 +1482,21 @@ namespace DAL
 
             }
 
-            return returnValue;
+            return myList;
 
+        }
+
+        public static bool GetIsCurrentStep(long index,long currentset)
+        {
+            if (index == currentset)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         public static DataTransferModel GetCurrentStep(string DocumentId)

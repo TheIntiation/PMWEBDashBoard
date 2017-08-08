@@ -269,15 +269,15 @@ namespace Services.Controllers
             return response;
         }
 
-        [HttpGet]
-        [Route("api/WorkFlow/GetDocumentStepsRoles")]
-        public HttpResponseMessage GetDocumentStepsRoles(string DocumentId)
-        {
-            DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.GetDocumentStepsRoles(DocumentId);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
-            return response;
-        }
+        //[HttpGet]
+        //[Route("api/WorkFlow/GetDocumentStepsRoles")]
+        //public HttpResponseMessage GetDocumentStepsRoles(string DocumentId)
+        //{
+        //    DataTransferModel returnValue = new DataTransferModel();
+        //    returnValue = DAL.WorkFlow.GetDocumentStepsRoles(DocumentId);
+        //    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+        //    return response;
+        //}
 
         [HttpGet]
         [Route("api/WorkFlow/GetCurrentStep")]
