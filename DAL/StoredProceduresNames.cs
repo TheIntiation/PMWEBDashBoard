@@ -22,6 +22,7 @@ namespace DAL
         public static string GetDelayedWorkflowdocuments = "[dbo].FG_Workflow_GetDocumentsInDelay";
         //@User bigint,@DocId bigint, @EntId bigint,@RecId bigint, @RecTypeId bigint,@ObjTypeId bigint, @ProjectId bigint,
         //@Comment nvarchar(max)
+        public static string finalApproveForWorkflow = "[dbo].USPMC_FinalApproveWorkflowDocument";
         public static string GetALLUserProjects = "[dbo].GetALLUserProjects";
         public static string uspmc_rpt_GetPunchLists = "[dbo].uspmc_rpt_GetPunchLists";
         public static string GetProgramsList = "[dbo].GetProgramsList";
@@ -38,13 +39,10 @@ namespace DAL
         public static string uspmc_exective_dashboard_cost = "[dbo].[uspmc_exective_dashboard_cost]";
         public static string uspmc_exective_dashboard_cost_pic = "[dbo].[uspmc_getProjectImagesById]";
         public static string getScheduleSnap = "[dbo].[uspmc_ScheduleSnap]";
-        //@User bigint,@DocId bigint, @EntId bigint,@RecId bigint, @RecTypeId bigint,@ObjTypeId bigint, @ProjectId bigint,
-        //@Comment nvarchar(max)
-        public static string finalApproveForWorkflow = "[dbo].USPMC_FinalApproveWorkflowDocument";
-        public static string approveForWorkflow = "[dbo].USPMC_ApproveWorkflowDocument";
-        public static string rejectForWorkflow = "[dbo].USPMC_RejectWorkflowdocument";
-        public static string returnForWorkflow = "[dbo].USPMC_ReturnWorkflowDocument";
-        public static string getWorkflowNotifications = "[dbo].uspmc_getWorkflowNotifications";
+        public static string Workflow_GetDocumentActionLogs = "[dbo].[Workflow_GetDocumentActionLogs]";
+        public static string uspmc_Workflow_GetDocumentStepsRoles = "[dbo].[uspmc_Workflow_GetDocumentStepsRoles]";
+        public static string Workflow_CalculateCurrentPendingStepId = "[dbo].[uspmc_Workflow_CalculateCurrentPendingStepId]";
+        public static string uspmc_Insert_HelpDesk = "[dbo].[uspmc_Insert_HelpDesk]";
 
     }
 

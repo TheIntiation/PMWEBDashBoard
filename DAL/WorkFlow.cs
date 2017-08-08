@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
-using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -849,21 +847,21 @@ namespace DAL
 
         private static double Getlat(string v)
         {
-            //var locationService = new GoogleLocationService();
-            //double latitude = 0;
-            //var point = locationService.GetLatLongFromAddress(v);
-            //latitude = point.Latitude;
-
-            return new Double();
+            var locationService = new GoogleLocationService();
+            double latitude = 0;
+            var point = locationService.GetLatLongFromAddress(v);
+            latitude = point.Latitude;
+                     
+            return latitude;
         }
 
         private static double Getlong(string v)
         {
-            //var locationService = new GoogleLocationService();
-            //var point = locationService.GetLatLongFromAddress(v);
+            var locationService = new GoogleLocationService();
+            var point = locationService.GetLatLongFromAddress(v);
 
-            //double longitude = point.Longitude;
-            return new Double();
+            double longitude = point.Longitude;
+            return longitude;
         }
 
         public static DataTransferModel GetProgramsList(int UserId)
@@ -964,7 +962,7 @@ namespace DAL
             return returnValue;
 
         }
-        public static DataTransferModel GetPendingWorkFlowByUserID(string UserID)
+        public static DataTransferModel GetPendingWorkFlowByUserID(string UserID, long RecordTypeIdWeb)
       {
           DataTransferModel returnValue = new DataTransferModel();
           IList<Workflow_GetInboxByUser> myList = new List<Workflow_GetInboxByUser>();
@@ -982,10 +980,11 @@ namespace DAL
                   // Open Connection
                   sqlConnection.Open();
 
-                  sqlCommand.Parameters.AddWithValue("@User", UserID);
+                    sqlCommand.Parameters.AddWithValue("@User", UserID);
+                    sqlCommand.Parameters.AddWithValue("@RecordTypeIdWeb", RecordTypeIdWeb);
 
-                  //Execute Command
-                  SqlDataReader reader = sqlCommand.ExecuteReader();
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
                   while (reader.Read())
                     {
                         myList.Add(new Workflow_GetInboxByUser()
@@ -1345,174 +1344,14 @@ namespace DAL
 
             return returnValue;
         }
-        public static DataTransferModel rejectForWorkflow(
-        Int64 User, Int64 DocId, Int64 EntId, Int64 RecId, Int64 RecTypeId, Int64 ObjTypeId,
-        Int64 ProjectId, string Comment)
+
+
+
+
+        public static DataTransferModel GetDocumentActionLogs(string DocumentId)
         {
             DataTransferModel returnValue = new DataTransferModel();
-            try
-            {
-                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
-                {
-                    SqlCommand sqlCommand = new SqlCommand();
-                    // Command Settings
-                    sqlCommand.CommandText = StoredProceduresNames.rejectForWorkflow;
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Connection = sqlConnection;
-
-                    // Open Connection
-                    sqlConnection.Open();
-
-                    // Command Parameters
-                    sqlCommand.Parameters.AddWithValue("@User", User);
-                    sqlCommand.Parameters.AddWithValue("@DocId", DocId);
-                    sqlCommand.Parameters.AddWithValue("@EntId", EntId);
-                    sqlCommand.Parameters.AddWithValue("@RecId", RecId);
-                    sqlCommand.Parameters.AddWithValue("@RecTypeId", RecTypeId);
-                    sqlCommand.Parameters.AddWithValue("@ObjTypeId", ObjTypeId);
-                    sqlCommand.Parameters.AddWithValue("@ProjectId", ProjectId);
-                    sqlCommand.Parameters.AddWithValue("@Comment", Comment);
-                    //Execute Command
-                    int returnVal = sqlCommand.ExecuteNonQuery();
-                    if (returnVal > 0)
-                    {
-                        returnValue.IsSucess = true;
-                        returnValue.Message = "Record was successfully rejected";
-                        NotificationEmails(DocId, "Rejected");
-                        returnValue.DataValue = null;
-
-                    }
-                    else
-                    {
-                        returnValue.IsSucess = false;
-                        returnValue.Message = "An error happened while rejecting the document";
-                        returnValue.DataValue = null;
-                    }
-                }
-            }
-            catch (SqlException sqlEx)
-            {
-                returnValue.IsSucess = false;
-                returnValue.Message = sqlEx.Message.ToString();
-                returnValue.DataValue = null;
-            }
-
-            return returnValue;
-        }
-        public static DataTransferModel normalApproveForWorkflow(
-
-          Int64 User, Int64 DocId, Int64 EntId, Int64 RecId, Int64 RecTypeId, Int64 ObjTypeId,
-          Int64 ProjectId, string Comment)
-        {
-            DataTransferModel returnValue = new DataTransferModel();
-            try
-            {
-                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
-                {
-                    SqlCommand sqlCommand = new SqlCommand();
-                    // Command Settings
-                    sqlCommand.CommandText = StoredProceduresNames.approveForWorkflow;
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Connection = sqlConnection;
-
-                    // Open Connection
-                    sqlConnection.Open();
-
-                    // Command Parameters
-                    sqlCommand.Parameters.AddWithValue("@User", User);
-                    sqlCommand.Parameters.AddWithValue("@DocId", DocId);
-                    sqlCommand.Parameters.AddWithValue("@EntId", EntId);
-                    sqlCommand.Parameters.AddWithValue("@RecId", RecId);
-                    sqlCommand.Parameters.AddWithValue("@RecTypeId", RecTypeId);
-                    sqlCommand.Parameters.AddWithValue("@ObjTypeId", ObjTypeId);
-                    sqlCommand.Parameters.AddWithValue("@ProjectId", ProjectId);
-                    sqlCommand.Parameters.AddWithValue("@Comment", Comment);
-                    //Execute Command
-                    int returnVal = sqlCommand.ExecuteNonQuery();
-                    if (returnVal > 0)
-                    {
-                        returnValue.IsSucess = true;
-                        returnValue.Message = "Record was successfully approved";
-                        returnValue.DataValue = null;
-
-                    }
-                    else
-                    {
-                        returnValue.IsSucess = false;
-                        returnValue.Message = "An error happened while approving the document";
-                        returnValue.DataValue = null;
-                    }
-                }
-            }
-            catch (SqlException sqlEx)
-            {
-                returnValue.IsSucess = false;
-                returnValue.Message = sqlEx.Message.ToString();
-                returnValue.DataValue = null;
-            }
-
-            return returnValue;
-        }
-
-
-        public static DataTransferModel returnForWorkflow(
-
-        Int64 User, Int64 DocId, Int64 EntId, Int64 RecId, Int64 RecTypeId, Int64 ObjTypeId,
-        Int64 ProjectId, string Comment)
-        {
-            DataTransferModel returnValue = new DataTransferModel();
-            try
-            {
-                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
-                {
-                    SqlCommand sqlCommand = new SqlCommand();
-                    // Command Settings
-                    sqlCommand.CommandText = StoredProceduresNames.returnForWorkflow;
-                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                    sqlCommand.Connection = sqlConnection;
-
-                    // Open Connection
-                    sqlConnection.Open();
-
-                    // Command Parameters
-                    sqlCommand.Parameters.AddWithValue("@User", User);
-                    sqlCommand.Parameters.AddWithValue("@DocId", DocId);
-                    sqlCommand.Parameters.AddWithValue("@EntId", EntId);
-                    sqlCommand.Parameters.AddWithValue("@RecId", RecId);
-                    sqlCommand.Parameters.AddWithValue("@RecTypeId", RecTypeId);
-                    sqlCommand.Parameters.AddWithValue("@ObjTypeId", ObjTypeId);
-                    sqlCommand.Parameters.AddWithValue("@ProjectId", ProjectId);
-                    sqlCommand.Parameters.AddWithValue("@Comment", Comment);
-                    //Execute Command
-                    int returnVal = sqlCommand.ExecuteNonQuery();
-                    if (returnVal > 0)
-                    {
-                        returnValue.IsSucess = true;
-                        returnValue.Message = "Record was successfully Returned";
-                        returnValue.DataValue = null;
-
-                    }
-                    else
-                    {
-                        returnValue.IsSucess = false;
-                        returnValue.Message = "An error happened while Returning the document";
-                        returnValue.DataValue = null;
-                    }
-                }
-            }
-            catch (SqlException sqlEx)
-            {
-                returnValue.IsSucess = false;
-                returnValue.Message = sqlEx.Message.ToString();
-                returnValue.DataValue = null;
-            }
-
-            return returnValue;
-        }
-        public static DataTransferModel NotificationEmails(long DocId,string msg)
-        {
-            DataTransferModel returnValue = new DataTransferModel();
-            IList<NotificationEmail> myList = new List<NotificationEmail>();
+            IList<DocumentActionLogs> myList = new List<DocumentActionLogs>();
 
             try
             {
@@ -1520,22 +1359,53 @@ namespace DAL
                 {
                     SqlCommand sqlCommand = new SqlCommand();
                     // Command Settings
-                    sqlCommand.CommandText = StoredProceduresNames.getWorkflowNotifications;
+                    sqlCommand.CommandText = StoredProceduresNames.Workflow_GetDocumentActionLogs;
                     sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                     sqlCommand.Connection = sqlConnection;
 
                     // Open Connection
                     sqlConnection.Open();
-                    sqlCommand.Parameters.AddWithValue("@DocId", DocId);
+                    sqlCommand.Parameters.AddWithValue("@DocumentId", DocumentId);
 
                     //Execute Command
                     SqlDataReader reader = sqlCommand.ExecuteReader();
                     while (reader.Read())
                     {
-                        myList.Add(new NotificationEmail()
+                        myList.Add(new DocumentActionLogs()
                         {
-                            Email = reader.GetDataReaderString("Email")//,
-                           // returnVal= sendMail(reader.GetDataReaderString("Email"), "A document has been "+ msg),
+
+                            ActionId = long.Parse(reader["ActionId"].ToString()),
+                            StepId = long.Parse(reader["StepId"].ToString()),
+                            ParentId = long.Parse(reader["ParentId"].ToString()),
+                            StepNumber = long.Parse(reader["StepNumber"].ToString()),
+                            StepSort = long.Parse(reader["StepSort"].ToString()),
+                            StepRoleId = long.Parse(reader["StepRoleId"].ToString()),
+                            RoleId = long.Parse(reader["RoleId"].ToString()),
+                            SpecialRoleId = long.Parse(reader["SpecialRoleId"].ToString()),
+                            RoleName = reader["SpecialRoleId"].ToString(),
+                            ActionTypeId = long.Parse(reader["ActionTypeId"].ToString()),
+                            ActionBy = long.Parse(reader["ActionBy"].ToString()),
+                            FullName = reader["FullName"].ToString(),
+                            ActionDate = reader.GetDataReaderDateTime("ActionDate"),
+                            ActionDueDate = reader.GetDataReaderDateTime("ActionDueDate"),
+                            Comments = reader["Comments"].ToString(),
+                            DocValue = reader["DocValue"].ToString(),
+                            IsBranch = reader["IsBranch"].ToString(),
+                            BranchActionTypeId = long.Parse(reader["BranchActionTypeId"].ToString()),
+                            BranchName = reader["BranchName"].ToString(),
+                            SignatureFileName = reader["SignatureFileName"].ToString(),
+                            SignatureExtension = reader["SignatureExtension"].ToString(),
+                            SignatureFileGuid = Guid.Parse(reader["SignatureFileGuid"].ToString()),
+                            thumbnailGuid = Guid.Parse(reader["thumbnailGuid"].ToString()),
+                            FullFileName = reader["FullFileName"].ToString(),
+                            ActionType = reader["ActionType"].ToString(),
+                            DelegateName = reader["DelegateName"].ToString(),
+                            TeamInputNames = reader["TeamInputNames"].ToString(),
+                            DeliveredToStepId = long.Parse(reader["DeliveredToStepId"].ToString()),
+                            HasEmail = reader["HasEmail"].ToString(),
+                            Generated = reader["Generated"].ToString(),
+                            Instructions = reader["Instructions"].ToString(),
+
                         });
                     }
                     returnValue.IsSucess = true;
@@ -1554,40 +1424,157 @@ namespace DAL
             return returnValue;
 
         }
-        public static  int sendMail(string ToAddress, string message)
+
+        public static DataTransferModel GetDocumentStepsRoles(string DocumentId)
         {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<DocumentStepsRoles> myList = new List<DocumentStepsRoles>();
+
             try
             {
-                const string FromAddress = "uspmcmail@gmail.com";
-                string Subject = message;
-                MailMessage mm = new MailMessage(FromAddress, ToAddress);
-                mm.Subject = Subject;
-                mm.IsBodyHtml = true;
-                mm.Priority = MailPriority.High;
-                var bdy = "<html><body> " + "<h2> " + message  + "</h2>"+ "</body></ html>";
-                mm.Body = bdy;
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.uspmc_Workflow_GetDocumentStepsRoles;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
 
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@DocumentId", DocumentId);
 
-                // Send the email
-                SmtpClient smtp = new SmtpClient();
-                // Default in IIS will be localhost 
-                smtp.Host = "smtp.gmail.com";
-                smtp.Credentials = new NetworkCredential("uspmcmail@gmail.com", "0102380328");
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new DocumentStepsRoles()
+                        {
 
-                //Default port will be 25
-                smtp.Port = 587;
-                smtp.Send(mm);
+                            Id = double.Parse(reader["Id"].ToString()),
+                            DocumentStepId = long.Parse(reader["DocumentStepId"].ToString()),
+                            RoleId = long.Parse(reader["RoleId"].ToString()),
+                            SavedUserId = long.Parse(reader["SavedUserId"].ToString()),
+                            RoleName = reader["RoleName"].ToString(),
+                            SpecialRoleId = long.Parse(reader["SpecialRoleId"].ToString()),
+                            FullName = reader["FullName"].ToString(),
+                            Delegates = reader["Delegates"].ToString(),
+                            TeamInput = reader["TeamInput"].ToString(),
+                            SpecialRoleUserId = long.Parse(reader["SpecialRoleUserId"].ToString()),
+                            SpecialRoleUserName = reader["SpecialRoleUserName"].ToString(),
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
             }
-            catch (Exception)
+            catch (SqlException sqlEx)
             {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
 
-                throw;
             }
-            return 0;
+
+            return returnValue;
+
         }
 
-       
+        public static DataTransferModel GetCurrentStep(string DocumentId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<CurrentStep> myList = new List<CurrentStep>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.Workflow_CalculateCurrentPendingStepId;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@DocumentId", DocumentId);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        myList.Add(new CurrentStep()
+                        {
+
+                            StepId = double.Parse(reader["StepId"].ToString()),
+                           
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
+        public static DataTransferModel InsertHelpDesk(HelpDTO HelpDTO)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<CurrentStep> myList = new List<CurrentStep>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.uspmc_Insert_HelpDesk;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+
+                    sqlCommand.Parameters.AddWithValue("@UserID", HelpDTO.UserID);
+                    sqlCommand.Parameters.AddWithValue("@Module", HelpDTO.Module);
+                    sqlCommand.Parameters.AddWithValue("@TypeOfIssue", HelpDTO.TypeOfIssue);
+                    sqlCommand.Parameters.AddWithValue("@Subject", HelpDTO.Subject);
+                    sqlCommand.Parameters.AddWithValue("@Description", HelpDTO.Description);
+
+                    //Execute Command
+                    int result = sqlCommand.ExecuteNonQuery();
+
+                    if (result >= 0 || result==-1)
+                    {
+                        returnValue.IsSucess = true;
+                        returnValue.Message = "Sucess";
+                        returnValue.DataValue = null;
+                    }
+                        
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return returnValue;
+
+        }
+
     }
-
-
 }

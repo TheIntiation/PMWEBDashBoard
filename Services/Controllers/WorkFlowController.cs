@@ -177,10 +177,10 @@ namespace Services.Controllers
 
         [HttpGet]
         [Route("api/WorkFlow/GetPendingWorkFlowByUserID")]
-        public HttpResponseMessage GetPendingWorkFlowByUserID(string UserID)
+        public HttpResponseMessage GetPendingWorkFlowByUserID(string UserID, long RecordTypeIdWeb)
         {
             DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.GetPendingWorkFlowByUserID(UserID);
+            returnValue = DAL.WorkFlow.GetPendingWorkFlowByUserID(UserID, RecordTypeIdWeb);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
@@ -259,38 +259,46 @@ namespace Services.Controllers
             return response;
         }
 
-        [HttpPost]
-        [Route("api/WorkFlow/rejectforworkflow")]
-        public HttpResponseMessage rejectforworkflow(obj obj)
+        [HttpGet]
+        [Route("api/WorkFlow/GetDocumentActionLogs")]
+        public HttpResponseMessage GetDocumentActionLogs(string DocumentId)
         {
             DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.rejectForWorkflow(obj.User, obj.DocId, obj.EntId,
-                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
+            returnValue = DAL.WorkFlow.GetDocumentActionLogs(DocumentId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetDocumentStepsRoles")]
+        public HttpResponseMessage GetDocumentStepsRoles(string DocumentId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetDocumentStepsRoles(DocumentId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("api/WorkFlow/GetCurrentStep")]
+        public HttpResponseMessage GetCurrentStep(string DocumentId)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.WorkFlow.GetCurrentStep(DocumentId);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
 
         [HttpPost]
-        [Route("api/WorkFlow/approveforworkflow")]
-        public HttpResponseMessage approveforworkflow(obj obj)
+        [Route("api/WorkFlow/InsertHelpDesk")]
+        public HttpResponseMessage InsertHelpDesk(HelpDTO HelpDTO)
         {
             DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.normalApproveForWorkflow(obj.User, obj.DocId, obj.EntId,
-                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
+            returnValue = DAL.WorkFlow.InsertHelpDesk(HelpDTO);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
 
-        [HttpPost]
-        [Route("api/WorkFlow/returnforworkflow")]
-        public HttpResponseMessage returnforworkflow(obj obj)
-        {
-            DataTransferModel returnValue = new DataTransferModel();
-            returnValue = DAL.WorkFlow.returnForWorkflow(obj.User, obj.DocId, obj.EntId,
-                obj.RecId, obj.RecTypeId, obj.ObjTypeId, obj.ProjectId, obj.Comment);
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
 
-            return response;
-        }
     }
 }
