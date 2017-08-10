@@ -1322,7 +1322,7 @@ namespace DAL
                         {
                             FileId = long.Parse(reader["FileId"].ToString()),
                             URL = reader["URL"].ToString(),
-                            FileOption = reader["TeamInput"].ToString(),
+                            FileOption = reader["FileOption"].ToString(),
                             FullFileName = reader["FullFileName"].ToString(),
                             FileGUID = reader["FileGUID"].ToString(),
                             Description = reader["Description"].ToString(),
