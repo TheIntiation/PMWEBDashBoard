@@ -257,6 +257,20 @@ namespace DataModel
         public long projectId { get; set; }
 
         public IList<DocumentStepsRoles> VisualWorkFlow { get; set; }
+        public IList<WorkflowAttachments> WorkFlowAttachments { get; set; }
+    }
+
+    public class WorkflowAttachments
+    {
+        //RecordTypeId	RecordType	TotalPendingItems
+        public long FileId { get; set; }
+        public string URL { get; set; }
+        public string FileOption { get; set; }
+        public string FullFileName { get; set; }
+        public string FileGUID { get; set; }
+        public string Description { get; set; }
+        public byte[] FileContent { get; set; }
+        public string FileContentBase64 { get; set; }
     }
 
     public class WorkflowDetailByModel

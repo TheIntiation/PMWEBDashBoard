@@ -1264,7 +1264,6 @@ namespace DAL
                             Entity = reader.GetDataReaderString("Entity"),
                             Description = reader.GetDataReaderString("Description"),
                             StatusId = (long)reader["StatusId"],
-
                             StepNumber = (long)reader["StepNumber"],
                             NumberOfSteps = (long)reader["NumberOfSteps"],
                             MainPage = reader.GetDataReaderString("MainPage"),
@@ -1272,7 +1271,8 @@ namespace DAL
                             DueDate=reader.GetDataReaderDateTime("DueDate"),
                             RecordNumber = reader.GetDataReaderString("RecordNumber"),
                             projectId = (long)reader["projectId"],
-                            VisualWorkFlow= GetDocumentStepsRoles(reader["DocumentId"].ToString(), reader["CurrentStepNumber"].ToString()),
+                            VisualWorkFlow = GetDocumentStepsRoles(reader["DocumentId"].ToString(), reader["CurrentStepNumber"].ToString()),
+                            WorkFlowAttachments = GetWorkflowAttachments(reader["RecordTypeId"].ToString(),reader["RecordId"].ToString(), UserId.ToString()),
                         });
                     }
                     returnValue.IsSucess = true;
@@ -1291,6 +1291,63 @@ namespace DAL
             return returnValue;
 
         }
+
+        public static IList<WorkflowAttachments> GetWorkflowAttachments(string RecordTypeId, string RecordId, string UserName)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<WorkflowAttachments> myList = new List<WorkflowAttachments>();
+
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.USPM_GetDocumentAttachments;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@RecordTypeId", RecordTypeId);
+                    sqlCommand.Parameters.AddWithValue("@RecordId", RecordId);
+                    sqlCommand.Parameters.AddWithValue("@UserName", @UserName);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    int counter = 0;
+                    while (reader.Read())
+                    {
+                        myList.Add(new WorkflowAttachments()
+                        {
+                            FileId = long.Parse(reader["FileId"].ToString()),
+                            URL = reader["URL"].ToString(),
+                            FileOption = reader["TeamInput"].ToString(),
+                            FullFileName = reader["FullFileName"].ToString(),
+                            FileGUID = reader["FileGUID"].ToString(),
+                            Description = reader["Description"].ToString(),
+                            FileContent = (byte[])reader["FileContent"],
+                            FileContentBase64 = Convert.ToBase64String((byte[])reader["FileContent"])
+                        });
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return myList;
+
+        }
+
+
         public static DataTransferModel finalApproveForWorkflow(
  
             Int64 User, Int64 DocId,Int64 EntId, Int64 RecId, Int64 RecTypeId,Int64 ObjTypeId,
