@@ -248,6 +248,15 @@ namespace Services.Controllers
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
             return response;
         }
+        [HttpGet]
+        [Route("api/WorkFlow/GetWorkflowAttachmentById")]
+        public HttpResponseMessage GetWorkflowAttachmentById(string RecordTypeId, string RecordId, string UserName, string Id)
+        {
+            string returnValue = null;
+            returnValue = DAL.WorkFlow.GetWorkflowAttachmentById(RecordTypeId, RecordId, UserName, Id);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
 
         [HttpGet]
         [Route("api/WorkFlow/GetALLUserProjects")]

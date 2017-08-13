@@ -255,6 +255,7 @@ namespace DataModel
         public DateTime? DueDate { get; set; }
         public string RecordNumber { get; set; }
         public long projectId { get; set; }
+        public long TotalAttachments { get; set; }
 
         public IList<DocumentStepsRoles> VisualWorkFlow { get; set; }
         public IList<WorkflowAttachments> WorkFlowAttachments { get; set; }
@@ -263,14 +264,19 @@ namespace DataModel
     public class WorkflowAttachments
     {
         //RecordTypeId	RecordType	TotalPendingItems
+        public long Id { get; set; }
         public long FileId { get; set; }
         public string URL { get; set; }
         public string FileOption { get; set; }
         public string FullFileName { get; set; }
+        public string Extention { get; set; }
         public string FileGUID { get; set; }
         public string Description { get; set; }
         public byte[] FileContent { get; set; }
         public string FileContentBase64 { get; set; }
+        public string RecordTypeId { get; set; }
+        public string RecordId { get; set; }
+        public string UserName { get; set; }
     }
 
     public class WorkflowDetailByModel
