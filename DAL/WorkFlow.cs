@@ -1368,7 +1368,7 @@ namespace DAL
                             FileId = long.Parse(reader["FileId"].ToString()),
                             URL = reader["URL"].ToString(),
                             FileOption = reader["FileOption"].ToString(),
-                            FullFileName = reader["FullFileName"].ToString(),
+                            FullFileName = "http://localhost:6607/Download?FullFileName=" + reader["FullFileName"].ToString(),
                             FileGUID = reader["FileGUID"].ToString(),
                             Description = reader["Description"].ToString(),
                             Extention = reader["Extention"].ToString(),
@@ -1860,7 +1860,7 @@ namespace DAL
         }
 
 
-        public static DataTransferModel rejectForWorkflow(
+  public static DataTransferModel rejectForWorkflow(
 
    Int64 User, Int64 DocId, Int64 EntId, Int64 RecId, Int64 RecTypeId, Int64 ObjTypeId,
    Int64 ProjectId, string Comment)
