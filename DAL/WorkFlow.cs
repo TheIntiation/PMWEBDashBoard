@@ -1273,6 +1273,7 @@ namespace DAL
                             projectId = (long)reader["projectId"],
                             VisualWorkFlow = GetDocumentStepsRoles(reader["DocumentId"].ToString(), reader["CurrentStepNumber"].ToString()),
                             WorkFlowAttachments = GetWorkflowAttachments(reader["RecordTypeId"].ToString(),reader["RecordId"].ToString(), UserId.ToString()),
+                            TotalAttachments= GetTotalAttachement(reader["RecordTypeId"].ToString(), reader["RecordId"].ToString(), UserId.ToString()),
                         });
                     }
                     returnValue.IsSucess = true;
@@ -1291,7 +1292,50 @@ namespace DAL
             return returnValue;
 
         }
+        public static long GetTotalAttachement(string RecordTypeId, string RecordId, string UserName)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<WorkflowAttachments> myList = new List<WorkflowAttachments>();
+            long TotalAttachemnt = 0;
 
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.USPM_GetDocumentAttachments;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@RecordTypeId", RecordTypeId);
+                    sqlCommand.Parameters.AddWithValue("@RecordId", RecordId);
+                    sqlCommand.Parameters.AddWithValue("@UserName", @UserName);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        TotalAttachemnt = TotalAttachemnt + 1;
+                      
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return TotalAttachemnt;
+        }
         public static IList<WorkflowAttachments> GetWorkflowAttachments(string RecordTypeId, string RecordId, string UserName)
         {
             DataTransferModel returnValue = new DataTransferModel();
@@ -1320,14 +1364,19 @@ namespace DAL
                     {
                         myList.Add(new WorkflowAttachments()
                         {
+                            Id = long.Parse(reader["Id"].ToString()),
                             FileId = long.Parse(reader["FileId"].ToString()),
                             URL = reader["URL"].ToString(),
                             FileOption = reader["FileOption"].ToString(),
                             FullFileName = reader["FullFileName"].ToString(),
                             FileGUID = reader["FileGUID"].ToString(),
                             Description = reader["Description"].ToString(),
-                            FileContent = (byte[])reader["FileContent"],
-                            FileContentBase64 = Convert.ToBase64String((byte[])reader["FileContent"])
+                            Extention = reader["Extention"].ToString(),
+                            RecordTypeId = RecordTypeId.ToString(),
+                            RecordId = RecordId.ToString(),
+                            UserName = UserName.ToString(),
+                            //FileContent = (byte[])reader["FileContent"],
+                            //FileContentBase64 = Convert.ToBase64String((byte[])reader["FileContent"])
                         });
                     }
                     returnValue.IsSucess = true;
@@ -1347,7 +1396,53 @@ namespace DAL
 
         }
 
+        public static string GetWorkflowAttachmentById(string RecordTypeId, string RecordId, string UserName, string Id)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            IList<WorkflowAttachments> myList = new List<WorkflowAttachments>();
+            byte[] Attachment = null;
+            string FileContentBase64 = null;
 
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.USPM_GetDocumentAttachmentsByID;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+                    sqlCommand.Parameters.AddWithValue("@RecordTypeId", RecordTypeId);
+                    sqlCommand.Parameters.AddWithValue("@RecordId", RecordId);
+                    sqlCommand.Parameters.AddWithValue("@UserName", @UserName);
+                    sqlCommand.Parameters.AddWithValue("@Id", @Id);
+
+                    //Execute Command
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Attachment = (byte[])reader["FileContent"];
+                        FileContentBase64 = Convert.ToBase64String((byte[])reader["FileContent"]);
+                    }
+                    returnValue.IsSucess = true;
+                    returnValue.Message = "Sucess";
+                    returnValue.DataValue = myList;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.ToString();
+                returnValue.DataValue = null;
+
+            }
+
+            return FileContentBase64;
+
+        }
         public static DataTransferModel finalApproveForWorkflow(
  
             Int64 User, Int64 DocId,Int64 EntId, Int64 RecId, Int64 RecTypeId,Int64 ObjTypeId,

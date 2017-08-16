@@ -48,7 +48,7 @@ namespace DAL
         public static string Workflow_CalculateCurrentPendingStepId = "[dbo].[uspmc_Workflow_CalculateCurrentPendingStepId]";
         public static string uspmc_Insert_HelpDesk = "[dbo].[uspmc_Insert_HelpDesk]";
         public static string USPM_GetDocumentAttachments = "[dbo].[USPM_GetDocumentAttachments]";
-        //test
+        public static string USPM_GetDocumentAttachmentsByID = "[dbo].[USPM_GetDocumentAttachmentsByID]";
     }
 
 
