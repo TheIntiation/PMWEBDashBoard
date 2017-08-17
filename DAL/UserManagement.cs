@@ -85,5 +85,56 @@ namespace DAL
             return returnValue;
         }
 
+
+        public static DataTransferModel AddUserDeviceDetails(long UserID, string UserName, string IMEI)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(Configurations.ConnectionString))
+                {
+                    SqlCommand sqlCommand = new SqlCommand();
+                    // Command Settings
+                    sqlCommand.CommandText = StoredProceduresNames.uspmc_uspmc_user_devices_details_insert;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCommand.Connection = sqlConnection;
+
+                    // Open Connection
+                    sqlConnection.Open();
+
+                    // Command Parameters
+                    sqlCommand.Parameters.AddWithValue("@IMEI", IMEI);
+                    sqlCommand.Parameters.AddWithValue("@UserName", UserName);
+                    sqlCommand.Parameters.AddWithValue("@UserID", UserID);
+
+                    //Execute Command
+                    int returnVal = sqlCommand.ExecuteNonQuery();
+                    if (returnVal > 0)
+                    {
+                        returnValue.IsSucess = true;
+                        returnValue.Message = "Record was successfully added";
+                        returnValue.DataValue = null;
+
+                    }
+                    else
+                    {
+                        returnValue.IsSucess = false;
+                        returnValue.Message = "An error happened";
+                        returnValue.DataValue = null;
+                    }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                returnValue.IsSucess = false;
+                returnValue.Message = sqlEx.Message.ToString();
+                returnValue.DataValue = null;
+            }
+
+            return returnValue;
+        }
+
+
+
     }
 }

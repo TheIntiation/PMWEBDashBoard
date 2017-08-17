@@ -12,6 +12,7 @@ namespace DataModel
         public string UserName { get; set; }
         public string UserFullName { get; set; }
         public string Password { get; set; }
+        public string IMEI { get; set; }
     }
 
     public class DocumentPunchList

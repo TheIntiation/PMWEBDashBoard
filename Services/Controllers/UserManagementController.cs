@@ -23,5 +23,17 @@ namespace Services.Controllers
             return response;
         }
 
+        [HttpPost]
+        [Route("api/UserManagement/AddUserDeviceDetails")]
+        public HttpResponseMessage AddUserDeviceDetails(UserAccount Obj)
+        {
+            DataTransferModel returnValue = new DataTransferModel();
+            returnValue = DAL.UserManagement.AddUserDeviceDetails(Obj.UserID,Obj.UserName,Obj.IMEI);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, returnValue);
+            return response;
+        }
+
+
+
     }
 }

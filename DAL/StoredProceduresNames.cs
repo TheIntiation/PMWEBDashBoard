@@ -49,6 +49,7 @@ namespace DAL
         public static string uspmc_Insert_HelpDesk = "[dbo].[uspmc_Insert_HelpDesk]";
         public static string USPM_GetDocumentAttachments = "[dbo].[USPM_GetDocumentAttachments]";
         public static string USPM_GetDocumentAttachmentsByID = "[dbo].[USPM_GetDocumentAttachmentsByID]";
+        public static string uspmc_uspmc_user_devices_details_insert = "[dbo].[uspmc_uspmc_user_devices_details_insert]";
     }
 
 
